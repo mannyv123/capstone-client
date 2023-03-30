@@ -1,0 +1,23 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.landing-page {
+    padding: 1rem;
+
+    &__title {
+        margin-bottom: 1rem;
+    }
+
+    &__feed-list {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__item {
+        width: 288px;
+        height: 288px;
+        background-color: lightgray;
+    }
+}
