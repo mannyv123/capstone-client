@@ -6,13 +6,16 @@ import "./SignUpPage.scss";
 function SignUpPage() {
     const [step, setStep] = useState("account");
 
-    const handleSteps = () => {
-        setStep("profile");
-    };
-
     return (
         <section className="signup">
-            {step === "account" ? <CreateAccount handleSteps={handleSteps} /> : <CreateProfile />}
+            <h1 className="signup__title">Sign Up</h1>
+            <form action="" className="signup__form">
+                {step === "account" ? (
+                    <CreateAccount setStep={setStep} />
+                ) : (
+                    <CreateProfile setStep={setStep} />
+                )}
+            </form>
         </section>
     );
 }

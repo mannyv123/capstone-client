@@ -1,10 +1,10 @@
 import "./CreateAccount.scss";
 
-function CreateAccount({ handleSteps }) {
+function CreateAccount({ setStep }) {
     return (
         <section className="new-account">
-            <h1 className="new-account__title">Sign Up</h1>
-            <form action="" className="new-account__form">
+            <h2 className="new-account__title">Create Account</h2>
+            <div className="new-account__form">
                 <label htmlFor="username" className="new-account__label">
                     Create username:
                 </label>
@@ -26,10 +26,10 @@ function CreateAccount({ handleSteps }) {
                     Add email:
                 </label>
                 <input type="email" name="email" id="email" className="new-account__input" />
-                <button onClick={handleSteps} type="button" className="new-account__btn--next">
+                <button onClick={() => setStep("profile")} type="button" className="new-account__btn--next">
                     Next
                 </button>
-            </form>
+            </div>
         </section>
     );
 }
