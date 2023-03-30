@@ -1,0 +1,9 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.new-account {
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+}
