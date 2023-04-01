@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "./Header.scss";
+import "./PageHeader.scss";
 // import logo from "../../assets/logos/logo-white.svg";
 
-function Header() {
+function PageHeader() {
     const [expanded, setExpanded] = useState(false);
 
     console.log(expanded);
@@ -26,4 +26,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default PageHeader;
