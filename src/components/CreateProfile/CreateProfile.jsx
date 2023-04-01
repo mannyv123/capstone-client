@@ -16,6 +16,9 @@ function CreateProfile({ setStep }) {
                 <button onClick={() => setStep("account")} type="button" className="new-profile__btn--back">
                     Back
                 </button>
+                <button className="new-profile__btn--complete" type="submit">
+                    Finish
+                </button>
             </div>
         </section>
     );
