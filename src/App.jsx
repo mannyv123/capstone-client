@@ -4,8 +4,14 @@ import PageHeader from "./components/PageHeader/PageHeader";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import AddCollectionPage from "./pages/AddCollectionPage/AddCollectionPage";
+import { useState } from "react";
+
+const users = [];
 
 function App() {
+    const [currentUser, setCurrentUser] = useState(null);
+
     return (
         <div className="App">
             <BrowserRouter>
@@ -13,8 +19,12 @@ function App() {
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/home" element={<Navigate to="/" />} />
-                    <Route path="/signup" element={<SignUpPage />} />
-                    <Route path="/profile" element={<ProfilePage />} />
+                    <Route
+                        path="/signup"
+                        element={<SignUpPage users={users} setCurrentUser={setCurrentUser} />}
+                    />
+                    <Route path="/profile/:username" element={<ProfilePage currentUser={currentUser} />} />
+                    <Route path="/addcollection" element={<AddCollectionPage />} />
                 </Routes>
             </BrowserRouter>
         </div>
