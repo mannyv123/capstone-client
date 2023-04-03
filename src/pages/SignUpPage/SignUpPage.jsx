@@ -66,14 +66,20 @@ function SignUpPage({ users, setCurrentUser }) {
         const formData = new FormData();
         for (const key in values) {
             formData.append(key, values[key]);
+            // console.log(key, values[key]);
         }
+
+        // formData.append("username", values.username);
 
         // values.profileImg = profileImg;
         formData.append("profileImg", profileImg);
 
+        for (const pair of formData.entries()) {
+            console.log(pair[0], pair[1]);
+        }
         createNewUser(formData);
 
-        navigate(`/profile/${values.username}`);
+        // navigate(`/profile/${values.username}`);
     };
 
     async function createNewUser(newUser) {
@@ -90,7 +96,12 @@ function SignUpPage({ users, setCurrentUser }) {
     return (
         <section className="signup">
             <h1 className="signup__title">Sign Up</h1>
-            <form action="" className="signup__form" onSubmit={handleFormSubmit}>
+            <form
+                action=""
+                className="signup__form"
+                onSubmit={handleFormSubmit}
+                encType="multipart/form-data"
+            >
                 {step === "account" ? (
                     <CreateAccount setStep={setStep} handleInputChange={handleInputChange} />
                 ) : (
