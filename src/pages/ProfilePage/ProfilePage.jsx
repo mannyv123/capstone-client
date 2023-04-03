@@ -6,7 +6,6 @@ import "./ProfilePage.scss";
 function ProfilePage({ currentUser }) {
     const { username } = useParams();
 
-    console.log(currentUser);
     return (
         <section className="profile">
             <div className="profile__details">

@@ -70,6 +70,7 @@ function SignUpPage({ users, setCurrentUser }) {
     };
 
     console.log(values);
+    console.log(users);
     return (
         <section className="signup">
             <h1 className="signup__title">Sign Up</h1>
