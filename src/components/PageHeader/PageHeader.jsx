@@ -6,8 +6,6 @@ import "./PageHeader.scss";
 function PageHeader() {
     const [expanded, setExpanded] = useState(false);
 
-    console.log(expanded);
-
     return (
         <header>
             <nav className={`nav ${expanded ? "nav--expanded" : ""}`}>
