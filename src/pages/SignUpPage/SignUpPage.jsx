@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import CreateAccount from "../../components/CreateAccount/CreateAccount";
 import CreateProfile from "../../components/CreateProfile/CreateProfile";
 import "./SignUpPage.scss";
+import { API_URL } from "../../App"; //temporary
 
 const initialValues = {
     username: "",
     password: "",
-    confirmPassword: "",
     email: "",
     name: "",
     about: "",
@@ -60,14 +61,29 @@ function SignUpPage({ users, setCurrentUser }) {
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
-        values.imgDataUrl = imgDataUrl;
-        values.profileImg = profileImg;
+        // values.imgDataUrl = imgDataUrl;
 
-        users.push(values);
-        setCurrentUser(values);
+        const formData = new FormData();
+        for (const key in values) {
+            formData.append(key, values[key]);
+        }
+
+        // values.profileImg = profileImg;
+        formData.append("profileImg", profileImg);
+
+        createNewUser(formData);
 
         navigate(`/profile/${values.username}`);
     };
+
+    async function createNewUser(newUser) {
+        try {
+            const resp = await axios.post(`${API_URL}/users`, newUser);
+            console.log(resp);
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     console.log(values);
     console.log(users);

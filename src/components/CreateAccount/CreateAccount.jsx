@@ -33,7 +33,7 @@ function CreateAccount({ setStep, handleInputChange }) {
                     name="confirmPassword"
                     id="confirmPassword"
                     className="new-account__input"
-                    onChange={handleInputChange}
+                    // onChange={handleInputChange}
                 />
                 <label htmlFor="email" className="new-account__label">
                     Add email:

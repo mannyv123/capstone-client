@@ -7,6 +7,8 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import AddCollectionPage from "./pages/AddCollectionPage/AddCollectionPage";
 import { useState } from "react";
 
+export const API_URL = "http://localhost:5001";
+
 const users = [];
 
 function App() {
