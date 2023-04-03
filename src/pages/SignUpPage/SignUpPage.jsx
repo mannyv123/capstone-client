@@ -36,9 +36,7 @@ function SignUpPage({ users, setCurrentUser }) {
         users.push(values);
         setCurrentUser(values);
 
-        console.log("users: ", users);
-
-        navigate("/profile");
+        navigate(`/profile/${values.username}`);
     };
 
     console.log(values);
