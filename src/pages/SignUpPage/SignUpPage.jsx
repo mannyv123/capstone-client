@@ -19,7 +19,7 @@ const initialValues = {
     setup: "",
 };
 
-function SignUpPage() {
+function SignUpPage({ users, setCurrentUser }) {
     const [step, setStep] = useState("account");
     const navigate = useNavigate();
     const [values, setValues] = useState(initialValues);
@@ -32,8 +32,15 @@ function SignUpPage() {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
+
+        users.push(values);
+        setCurrentUser(values);
+
+        console.log("users: ", users);
+
         navigate("/profile");
     };
+
     console.log(values);
     return (
         <section className="signup">
