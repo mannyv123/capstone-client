@@ -1,10 +1,26 @@
 import CollectionsList from "../../components/CollectionsList/CollectionsList";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
+import { API_URL } from "../../App";
 // import { useState, useEffect } from "react";
 import "./ProfilePage.scss";
 
 function ProfilePage({ currentUser }) {
     const { username } = useParams();
+
+    useEffect(() => {
+        getUser();
+    }, []);
+
+    async function getUser() {
+        try {
+            const resp = await axios.get(`${API_URL}/users/${username}`);
+            console.log(resp);
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return (
         <section className="profile">
