@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import CreateAccount from "../../components/CreateAccount/CreateAccount";
 import CreateProfile from "../../components/CreateProfile/CreateProfile";
 import "./SignUpPage.scss";
+import { API_URL } from "../../App"; //temporary
 
 const initialValues = {
     username: "",
     password: "",
-    confirmPassword: "",
     email: "",
     name: "",
     about: "",
@@ -60,21 +61,47 @@ function SignUpPage({ users, setCurrentUser }) {
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
-        values.imgDataUrl = imgDataUrl;
-        values.profileImg = profileImg;
+        // values.imgDataUrl = imgDataUrl;
 
-        users.push(values);
-        setCurrentUser(values);
+        const formData = new FormData();
+        for (const key in values) {
+            formData.append(key, values[key]);
+            // console.log(key, values[key]);
+        }
 
-        navigate(`/profile/${values.username}`);
+        // formData.append("username", values.username);
+
+        // values.profileImg = profileImg;
+        formData.append("profileImg", profileImg);
+
+        for (const pair of formData.entries()) {
+            console.log(pair[0], pair[1]);
+        }
+        createNewUser(formData);
+
+        // navigate(`/profile/${values.username}`);
     };
+
+    async function createNewUser(newUser) {
+        try {
+            const resp = await axios.post(`${API_URL}/users`, newUser);
+            console.log(resp);
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     console.log(values);
     console.log(users);
     return (
         <section className="signup">
             <h1 className="signup__title">Sign Up</h1>
-            <form action="" className="signup__form" onSubmit={handleFormSubmit}>
+            <form
+                action=""
+                className="signup__form"
+                onSubmit={handleFormSubmit}
+                encType="multipart/form-data"
+            >
                 {step === "account" ? (
                     <CreateAccount setStep={setStep} handleInputChange={handleInputChange} />
                 ) : (
