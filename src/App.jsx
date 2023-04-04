@@ -11,8 +11,6 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 export const API_URL = "http://localhost:5001";
 
 function App() {
-    const [currentUser, setCurrentUser] = useState(null);
-
     return (
         <div className="App">
             <BrowserRouter>
@@ -20,10 +18,10 @@ function App() {
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/home" element={<Navigate to="/" />} />
-                    <Route path="/signup" element={<SignUpPage setCurrentUser={setCurrentUser} />} />
-                    <Route path="/login" element={<LoginPage setCurrentUser={setCurrentUser} />} />
-                    <Route path="/profile/:username" element={<ProfilePage currentUser={currentUser} />} />
-                    <Route path="/addcollection" element={<AddCollectionPage currentUser={currentUser} />} />
+                    <Route path="/signup" element={<SignUpPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/profile/:username" element={<ProfilePage />} />
+                    <Route path="/addcollection" element={<AddCollectionPage />} />
                 </Routes>
             </BrowserRouter>
         </div>

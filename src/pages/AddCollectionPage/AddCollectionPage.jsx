@@ -9,10 +9,12 @@ const initialValues = {
     description: "",
 };
 
-function AddCollectionPage({ currentUser }) {
+function AddCollectionPage() {
     const [userId, setUserId] = useState("");
     const [values, setValues] = useState(initialValues);
     const [images, setImages] = useState(null);
+
+    const currentUser = localStorage.getItem("username");
 
     useEffect(() => {
         getUser();
