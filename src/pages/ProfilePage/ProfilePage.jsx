@@ -11,20 +11,30 @@ function ProfilePage() {
     const [user, setUser] = useState(null);
     const [postsData, setPostsData] = useState([]);
 
-    //Get the current user data
-    useEffect(() => {
-        getUser();
-        if (user) {
-            getPosts(user.id);
-        }
-    }, [user]);
+    // const myPromise = new Promise((resolve, reject) => {
+    //     getUser();
+    // });
 
-    //If there is a user, get the related posts of that user
+    //Get the current user data
     // useEffect(() => {
+    //     myPromise.then();
+
     //     if (user) {
     //         getPosts(user.id);
     //     }
-    // }, [user]);
+    // }, []);
+
+    useEffect(() => {
+        getUser();
+    }, []);
+
+    //If there is a user, get the related posts of that user
+    useEffect(() => {
+        if (user) {
+            console.log(" I AM GEtTING POST");
+            getPosts(user.id);
+        }
+    }, [user]);
 
     // //Get User Details
     async function getUser() {
@@ -41,11 +51,14 @@ function ProfilePage() {
         try {
             const resp = await axios.get(`${API_URL}/users/${user}/posts`);
 
+            console.log(" resp : ", resp.data);
             setPostsData(resp.data);
         } catch (error) {
             console.error(error);
         }
     }
+
+    console.log("hello");
 
     return (
         <section className="profile">

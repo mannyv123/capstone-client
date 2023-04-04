@@ -38,9 +38,11 @@ function AddCollectionPage() {
             console.log(pair[0], pair[1]);
         }
 
-        createPost(formData);
+        createPost(formData).then((res) => {
+            console.log("res after create: ", res);
 
-        navigate(`/profile/${currentUser}`);
+            navigate(`/profile/${currentUser}`);
+        });
     };
 
     //Handle text input change
@@ -58,7 +60,7 @@ function AddCollectionPage() {
     async function createPost(newPost) {
         try {
             const resp = await axios.post(`${API_URL}/users/${userId}/posts`, newPost);
-            console.log(resp);
+            console.log("resp from create post: ", resp);
         } catch (error) {
             console.error(error);
         }
