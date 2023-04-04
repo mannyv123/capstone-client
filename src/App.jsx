@@ -5,7 +5,6 @@ import LandingPage from "./pages/LandingPage/LandingPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import AddCollectionPage from "./pages/AddCollectionPage/AddCollectionPage";
-import { useState } from "react";
 import LoginPage from "./pages/LoginPage/LoginPage";
 
 export const API_URL = "http://localhost:5001";
