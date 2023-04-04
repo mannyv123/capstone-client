@@ -1,23 +1,25 @@
 import "./CollectionsList.scss";
+// import axios from "axios";
+import { API_URL } from "../../App";
 
-function CollectionsList() {
+function CollectionsList({ postsData }) {
     return (
         <ul className="collections">
-            {/* temporary ------- start */}
-            <li className="collections__item"></li>
-            <li className="collections__item"></li>
-            <li className="collections__item"></li>
-            <li className="collections__item"></li>
-            <li className="collections__item"></li>
-            <li className="collections__item"></li>
-            <li className="collections__item"></li>
-            <li className="collections__item"></li>
-            <li className="collections__item"></li>
-            <li className="collections__item"></li>
-            <li className="collections__item"></li>
-            <li className="collections__item"></li>
-            <li className="collections__item"></li>
-            {/* temporary ------- end */}
+            {postsData.map((post) => {
+                return (
+                    <li className="collections__post">
+                        {post.imageUrls.map((image) => {
+                            return (
+                                <img
+                                    className="collections__post-image"
+                                    src={`${API_URL}/${image}`}
+                                    alt="post"
+                                />
+                            );
+                        })}
+                    </li>
+                );
+            })}
         </ul>
     );
 }
