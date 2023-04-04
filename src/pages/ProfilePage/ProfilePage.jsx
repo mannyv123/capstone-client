@@ -14,11 +14,26 @@ function ProfilePage({ currentUser }) {
         getUser();
     }, []);
 
+    useEffect(() => {
+        getPosts(user.id);
+    }, [user]);
+
+    //Get User Details
     async function getUser() {
         try {
             const resp = await axios.get(`${API_URL}/users/${username}`);
             console.log(resp);
             setUser(resp.data[0]);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    //Get User Posts
+    async function getPosts(user) {
+        try {
+            const resp = await axios.get(`${API_URL}/users/${user}/posts`);
+            console.log(resp);
         } catch (error) {
             console.error(error);
         }
