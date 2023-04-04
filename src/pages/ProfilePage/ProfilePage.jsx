@@ -1,5 +1,5 @@
 import CollectionsList from "../../components/CollectionsList/CollectionsList";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_URL } from "../../App";
@@ -55,7 +55,9 @@ function ProfilePage() {
                 <h1 className="profile__title">Welcome {user.username}</h1>
                 <img src={`${API_URL}${user.profileImg}`} alt="user profile" className="profile__image" />
             </div>
-            <div className="profile__add-collection">Add New Collection</div>
+            <Link to="/addcollection">
+                <div className="profile__add-collection">Add New Collection</div>
+            </Link>
             <h2 className="profile__collections-title">Your Collections</h2>
             <CollectionsList postsData={postsData} />
         </section>

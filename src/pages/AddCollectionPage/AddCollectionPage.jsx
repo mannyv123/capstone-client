@@ -1,13 +1,14 @@
 import "./AddCollectionPage.scss";
 import { useNavigate } from "react-router-dom";
 
-function AddCollectionPage() {
+function AddCollectionPage({ currentUser }) {
     const navigate = useNavigate();
     const handleFormSubmit = (event) => {
         event.preventDefault();
         navigate("/profile");
     };
 
+    console.log(currentUser);
     return (
         <section className="new-collection">
             <h1 className="new-collection__title">Add New Collection</h1>
