@@ -9,8 +9,6 @@ import { useState } from "react";
 
 export const API_URL = "http://localhost:5001";
 
-const users = [];
-
 function App() {
     const [currentUser, setCurrentUser] = useState(null);
 
@@ -21,12 +19,9 @@ function App() {
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/home" element={<Navigate to="/" />} />
-                    <Route
-                        path="/signup"
-                        element={<SignUpPage users={users} setCurrentUser={setCurrentUser} />}
-                    />
+                    <Route path="/signup" element={<SignUpPage setCurrentUser={setCurrentUser} />} />
                     <Route path="/profile/:username" element={<ProfilePage currentUser={currentUser} />} />
-                    <Route path="/addcollection" element={<AddCollectionPage />} />
+                    <Route path="/addcollection" element={<AddCollectionPage currentUser={currentUser} />} />
                 </Routes>
             </BrowserRouter>
         </div>

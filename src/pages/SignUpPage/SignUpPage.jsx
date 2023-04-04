@@ -15,13 +15,13 @@ const initialValues = {
     setup: "",
 };
 
-function SignUpPage({ users, setCurrentUser }) {
+function SignUpPage({ setCurrentUser }) {
     const [step, setStep] = useState("account");
     const navigate = useNavigate();
     const [values, setValues] = useState(initialValues);
 
     const [profileImg, setProfileImg] = useState(null);
-    const [imgDataUrl, setImgDataUrl] = useState(null);
+    // const [imgDataUrl, setImgDataUrl] = useState(null);
     // const [imgFilename, setImgFilename] = useState("");
 
     //useEffect to read the selected file and set the file data url
@@ -33,7 +33,7 @@ function SignUpPage({ users, setCurrentUser }) {
             fileReader.onload = (event) => {
                 const { result } = event.target;
                 if (result && !isCancel) {
-                    setImgDataUrl(result);
+                    // setImgDataUrl(result);
                     // setImgFilename(currentUser.profileImg.name);
                 }
             };
@@ -79,7 +79,8 @@ function SignUpPage({ users, setCurrentUser }) {
         }
         createNewUser(formData);
 
-        // navigate(`/profile/${values.username}`);
+        setCurrentUser(values.username);
+        navigate(`/profile/${values.username}`);
     };
 
     async function createNewUser(newUser) {
@@ -92,7 +93,7 @@ function SignUpPage({ users, setCurrentUser }) {
     }
 
     console.log(values);
-    console.log(users);
+
     return (
         <section className="signup">
             <h1 className="signup__title">Sign Up</h1>
