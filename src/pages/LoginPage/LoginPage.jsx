@@ -12,8 +12,8 @@ function LoginPage({ setCurrentUser }) {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        setCurrentUser(user);
 
+        localStorage.setItem("username", user);
         navigate(`/profile/${user}`);
     };
 

@@ -15,7 +15,7 @@ const initialValues = {
     setup: "",
 };
 
-function SignUpPage({ setCurrentUser }) {
+function SignUpPage() {
     const [step, setStep] = useState("account");
     const navigate = useNavigate();
     const [values, setValues] = useState(initialValues);
@@ -79,7 +79,7 @@ function SignUpPage({ setCurrentUser }) {
         }
         createNewUser(formData);
 
-        setCurrentUser(values.username);
+        localStorage.setItem("username", values.username);
         navigate(`/profile/${values.username}`);
     };
 
