@@ -59,13 +59,13 @@ function ProfilePage() {
     }
 
     console.log("hello");
-
+    console.log("user: ", user);
     return (
         <section className="profile">
             {user ? (
                 <div className="profile__details">
                     <h1 className="profile__title">Welcome {user.username}</h1>
-                    <img src={`${API_URL}${user.profileImg}`} alt="user profile" className="profile__image" />
+                    <img src={user.profileImgUrl} alt="user profile" className="profile__image" />
                 </div>
             ) : (
                 ""
