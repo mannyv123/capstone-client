@@ -11,7 +11,9 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
             {postsData.map((post) => {
                 return (
                     <li className="collections__post" key={post.id}>
-                        <h3 className="collections__post-title">{post.title}</h3>
+                        <div className="collections__title-container">
+                            <h3 className="collections__post-title">{post.title}</h3>
+                        </div>
                         <div className="collections__post-images">
                             {post.imageUrls.map((image, index) => {
                                 return (
