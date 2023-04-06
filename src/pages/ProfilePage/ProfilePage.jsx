@@ -47,12 +47,29 @@ function ProfilePage() {
     }
 
     //Get User Posts
-    async function getPosts(user) {
+    async function getPosts(userId) {
         try {
-            const resp = await axios.get(`${API_URL}/users/${user}/posts`);
+            const resp = await axios.get(`${API_URL}/users/${userId}/posts`);
 
             console.log(" resp : ", resp.data);
             setPostsData(resp.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    //Delete Posts
+    const handleCollectionDelete = (userId, postId) => {
+        console.log("delete", postId);
+        deletePost(userId, postId).then(() => {
+            getPosts(userId); //might be able to avoid an api call and just set posts data to something else
+        });
+    };
+
+    async function deletePost(userId, postId) {
+        try {
+            const resp = await axios.delete(`${API_URL}/users/${userId}/posts/${postId}`);
+            console.log("delete resp: ", resp);
         } catch (error) {
             console.error(error);
         }
@@ -75,7 +92,7 @@ function ProfilePage() {
                 <div className="profile__add-collection">Add New Collection</div>
             </Link>
             <h2 className="profile__collections-title">Your Collections</h2>
-            <CollectionsList postsData={postsData} />
+            <CollectionsList postsData={postsData} handleCollectionDelete={handleCollectionDelete} />
         </section>
     );
 }
