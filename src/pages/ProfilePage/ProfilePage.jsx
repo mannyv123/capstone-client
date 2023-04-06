@@ -92,7 +92,11 @@ function ProfilePage() {
                 <div className="profile__add-collection">Add New Collection</div>
             </Link>
             <h2 className="profile__collections-title">Your Collections</h2>
-            <CollectionsList postsData={postsData} handleCollectionDelete={handleCollectionDelete} />
+            <CollectionsList
+                postsData={postsData}
+                handleCollectionDelete={handleCollectionDelete}
+                showDelete="yes"
+            />
         </section>
     );
 }

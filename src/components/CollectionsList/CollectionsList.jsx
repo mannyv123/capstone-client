@@ -1,11 +1,10 @@
 import { useState } from "react";
+import axios from "axios";
+import { API_URL } from "../../App";
 import "./CollectionsList.scss";
 // import axios from "axios";
 
-function CollectionsList({ postsData, handleCollectionDelete }) {
-    const [showDelete, setShowDelete] = useState(true);
-    if (!handleCollectionDelete) setShowDelete(false);
-
+function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
     console.log(postsData);
     return (
         <ul className="collections">
@@ -17,7 +16,7 @@ function CollectionsList({ postsData, handleCollectionDelete }) {
                                 <img className="collections__post-image" src={`${image}`} alt="collection" />
                             );
                         })}
-                        {showDelete ? (
+                        {showDelete === "yes" ? (
                             <div
                                 className="collections__delete"
                                 onClick={() => handleCollectionDelete(post.user_id, post.id)}
