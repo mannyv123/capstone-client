@@ -10,12 +10,20 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
         <ul className="collections">
             {postsData.map((post) => {
                 return (
-                    <li className="collections__post">
-                        {post.imageUrls.map((image) => {
-                            return (
-                                <img className="collections__post-image" src={`${image}`} alt="collection" />
-                            );
-                        })}
+                    <li className="collections__post" key={post.id}>
+                        <h3 className="collections__post-title">{post.title}</h3>
+                        <div className="collections__post-images">
+                            {post.imageUrls.map((image, index) => {
+                                return (
+                                    <img
+                                        key={index}
+                                        className="collections__post-image"
+                                        src={`${image}`}
+                                        alt="collection"
+                                    />
+                                );
+                            })}
+                        </div>
                         {showDelete === "yes" ? (
                             <div
                                 className="collections__delete"

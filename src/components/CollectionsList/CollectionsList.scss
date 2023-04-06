@@ -5,11 +5,36 @@
     list-style-type: none;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
 
     &__post {
-        background-color: lightgrey;
+        border-radius: 1.25rem 1.25rem 0 0;
 
+        padding-top: 1rem;
+
+        background-color: rgba(217, 217, 217, 0.58);
+        border: 1px solid white;
+        box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+        backdrop-filter: blur(6px);
+        cursor: pointer;
+        transition: all 0.5s;
+
+        &:hover {
+            border: 1px solid black;
+            transform: scale(1.005);
+        }
+
+        &:active {
+            transform: scale(0.95) rotateZ(1.7deg);
+        }
+    }
+
+    &__post-title {
+        margin-left: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    &__post-images {
         display: flex;
         overflow: auto;
         scroll-snap-type: x mandatory;
