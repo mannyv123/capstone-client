@@ -9,9 +9,15 @@
 
     &__post {
         background-color: lightgrey;
+
+        display: flex;
+        overflow: auto;
+        scroll-snap-type: x mandatory;
     }
 
     &__post-image {
         width: 100%;
+
+        scroll-snap-align: start;
     }
 }
