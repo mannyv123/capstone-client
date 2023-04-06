@@ -2,10 +2,13 @@
 @use "../../styles/partials/mixins" as *;
 
 .landing-page {
-    padding: 1rem;
+    padding: 2rem;
+
+    // background-color: #212121;
+    // color: white;
 
     &__title {
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
     }
 
     &__feed-list {
