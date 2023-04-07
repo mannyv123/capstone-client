@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+
 import axios from "axios";
 import { API_URL } from "../../App";
 import "./CollectionsList.scss";
+import MapBox from "../MapBox/MapBox";
 // import axios from "axios";
 
 function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
@@ -36,6 +38,7 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
                         ) : (
                             ""
                         )}
+                        <MapBox />
                     </li>
                 );
             })}
