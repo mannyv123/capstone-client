@@ -27,6 +27,7 @@ function MapBox({ postData }) {
         });
 
         // Create default markers
+        const bounds = new mapboxgl.LngLatBounds();
         postData.imageInfo.map((image) => {
             const marker = new mapboxgl.Marker().setLngLat([image.latitude, image.longitude]).addTo(map);
             const popup = new mapboxgl.Popup().setHTML("<h3>" + image.title + "</h3>");
@@ -34,6 +35,14 @@ function MapBox({ postData }) {
 
             // Set the marker's CSS property to 'pointer'
             marker.getElement().style.cursor = "pointer";
+
+            //Extend the bounds object with each LngLat coordinate
+            bounds.extend(marker.getLngLat());
+        });
+
+        //Fit the map to the bounds of the markers
+        map.fitBounds(bounds, {
+            padding: 50,
         });
 
         // Add click event listener for markers

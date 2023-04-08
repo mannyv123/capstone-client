@@ -13,7 +13,8 @@ function AddCollectionPage() {
     const [userId, setUserId] = useState("");
     const [values, setValues] = useState(initialValues);
     const [images, setImages] = useState(null);
-
+    const [imagesArray, setImagesArray] = useState([]);
+    const [imageInfo, setImageInfo] = useState([]);
     const currentUser = localStorage.getItem("username");
 
     useEffect(() => {
@@ -33,6 +34,8 @@ function AddCollectionPage() {
         for (let i = 0; i < images.length; i++) {
             formData.append("images", images[i]);
         }
+
+        formData.append("imageInfo", JSON.stringify(imageInfo));
 
         for (const pair of formData.entries()) {
             console.log(pair[0], pair[1]);
@@ -54,8 +57,18 @@ function AddCollectionPage() {
     //Handle image uploads
     const handleImageUploads = (event) => {
         setImages(event.target.files);
+
+        setImagesArray(Object.entries(event.target.files).map((event) => URL.createObjectURL(event[1])));
     };
 
+    //Handle image info
+    const handleImageInfo = (event, index) => {
+        const { name, value } = event.target;
+        const newImageInfo = [...imageInfo];
+        newImageInfo[index] = { ...newImageInfo[index], [name]: value };
+        setImageInfo(newImageInfo);
+    };
+    console.log("imageinfo: ", imageInfo);
     //Create new post
     async function createPost(newPost) {
         try {
@@ -108,6 +121,34 @@ function AddCollectionPage() {
                         id="description"
                         onChange={handleInputChange}
                     ></textarea>
+                </div>
+                <div className="new-collection__container-locations">
+                    {imagesArray.map((image, index) => (
+                        <div>
+                            <img src={image} alt="photo" className="new-collection__image-preview" />
+                            <label htmlFor={`imgTitle${index}`}>Image Title:</label>
+                            <input
+                                type="text"
+                                name={`imgTitle${index}`}
+                                id={`imgTitle${index}`}
+                                onChange={(event) => handleImageInfo(event, index)}
+                            />
+                            <label htmlFor="imgLat">Latitude:</label>
+                            <input
+                                type="text"
+                                name="imgLat"
+                                id="imgLat"
+                                onChange={(event) => handleImageInfo(event, index)}
+                            />
+                            <label htmlFor="imgLong">Longitude:</label>
+                            <input
+                                type="text"
+                                name="imgLong"
+                                id="imgLong"
+                                onChange={(event) => handleImageInfo(event, index)}
+                            />
+                        </div>
+                    ))}
                 </div>
                 <button type="submit">Create Collection</button>
             </form>
