@@ -8,12 +8,14 @@ import geoJson from "./chicago-parks.json";
 mapboxgl.accessToken =
     "pk.eyJ1IjoibWFuam90dmlyZGkiLCJhIjoiY2xnNWdhY3o4MDJxdTNybnN6Yjhsd3JxZCJ9.Bu9GfHhm_CPCenoVbXASKg";
 
-function MapBox() {
+function MapBox({ postData }) {
     const mapContainer = useRef(null);
     // const map = useRef(null);
     const [lng, setLng] = useState(-87.65);
     const [lat, setLat] = useState(41.84);
     const [zoom, setZoom] = useState(10);
+
+    console.log("single post data: ", postData);
 
     //initialize the map
     useEffect(() => {
@@ -25,9 +27,9 @@ function MapBox() {
         });
 
         // Create default markers
-        geoJson.features.map((feature) => {
-            const marker = new mapboxgl.Marker().setLngLat(feature.geometry.coordinates).addTo(map);
-            const popup = new mapboxgl.Popup().setHTML("<h3>" + feature.properties.title + "</h3>");
+        postData.imageInfo.map((image) => {
+            const marker = new mapboxgl.Marker().setLngLat([image.latitude, image.longitude]).addTo(map);
+            const popup = new mapboxgl.Popup().setHTML("<h3>" + image.title + "</h3>");
             marker.setPopup(popup);
 
             // Set the marker's CSS property to 'pointer'
@@ -59,9 +61,9 @@ function MapBox() {
     return (
         <div className="map-content-container">
             <div>
-                <div className="sidebar">
+                {/* <div className="sidebar">
                     Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-                </div>
+                </div> */}
                 <div ref={mapContainer} className="map-container" />
             </div>
         </div>

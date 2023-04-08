@@ -38,7 +38,7 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
                         ) : (
                             ""
                         )}
-                        <MapBox />
+                        <MapBox postData={post} />
                     </li>
                 );
             })}
