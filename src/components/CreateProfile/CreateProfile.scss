@@ -2,8 +2,87 @@
 @use "../../styles/partials/mixins" as *;
 
 .new-profile {
+    &__title {
+        @include desktop {
+            margin-bottom: 2rem;
+        }
+    }
+
     &__form {
         display: flex;
         flex-direction: column;
+    }
+
+    &__preview {
+        @include desktop {
+            width: 100%;
+            height: 15rem;
+
+            object-fit: contain;
+            object-position: center;
+
+            background-color: #2f3238;
+            border-radius: 0.625rem;
+        }
+    }
+
+    &__image {
+        width: 0.0063rem;
+        height: 0.0063rem;
+        opacity: 0;
+        position: absolute;
+    }
+
+    &__select-img {
+        background-color: #2f3238;
+        color: white;
+        border-radius: 0.625rem;
+
+        padding: 0.5rem 1rem;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        width: 100%;
+
+        border: none;
+        cursor: pointer;
+
+        text-align: center;
+
+        &:hover {
+            background-color: #8b8e91;
+            outline: 0.0625rem solid black;
+        }
+    }
+
+    &__label {
+        margin-bottom: 0.25rem;
+    }
+
+    &__input {
+        @include desktop {
+            margin-bottom: 0.5rem;
+            border: 0.0625rem solid grey;
+            border-radius: 5px;
+            padding: 0.5rem;
+        }
+
+        &--textarea {
+            resize: none;
+
+            @include desktop {
+                height: 4rem;
+            }
+
+            &:last-of-type {
+                @include desktop {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    &__btn-container {
+        display: flex;
+        justify-content: space-between;
     }
 }
