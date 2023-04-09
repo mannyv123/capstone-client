@@ -54,6 +54,20 @@
         }
     }
 
+    &__input {
+        @include desktop {
+            margin-bottom: 0.5rem;
+        }
+
+        &--textarea {
+            &:last-of-type {
+                @include desktop {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
     &__btn-container {
         display: flex;
         justify-content: space-between;

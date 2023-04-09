@@ -21,11 +21,27 @@ function CreateProfile({ setStep, handleInputChange, handleImageUpload, profileI
                     {profileImg ? profileImg.name : "Select a Profile Image"}
                 </label>
                 <label htmlFor="name">Name: </label>
-                <input type="text" name="name" id="name" onChange={handleInputChange} />
+                <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    onChange={handleInputChange}
+                    className="new-profile__input"
+                />
                 <label htmlFor="about">About You:</label>
-                <textarea name="about" id="about" onChange={handleInputChange}></textarea>
+                <textarea
+                    name="about"
+                    id="about"
+                    onChange={handleInputChange}
+                    className="new-profile__input new-profile__input--textarea "
+                ></textarea>
                 <label htmlFor="setup">Your Setup: </label>
-                <textarea name="setup" id="setup" onChange={handleInputChange}></textarea>
+                <textarea
+                    name="setup"
+                    id="setup"
+                    onChange={handleInputChange}
+                    className="new-profile__input new-profile__input--textarea "
+                ></textarea>
                 <div className="new-profile__btn-container">
                     <button
                         onClick={() => setStep("account")}
