@@ -54,12 +54,25 @@
         }
     }
 
+    &__label {
+        margin-bottom: 0.25rem;
+    }
+
     &__input {
         @include desktop {
             margin-bottom: 0.5rem;
+            border: 0.0625rem solid grey;
+            border-radius: 5px;
+            padding: 0.5rem;
         }
 
         &--textarea {
+            resize: none;
+
+            @include desktop {
+                height: 4rem;
+            }
+
             &:last-of-type {
                 @include desktop {
                     margin-bottom: 0;

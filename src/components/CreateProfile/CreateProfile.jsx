@@ -20,7 +20,9 @@ function CreateProfile({ setStep, handleInputChange, handleImageUpload, profileI
                 <label htmlFor="profileImg" className="new-profile__select-img">
                     {profileImg ? profileImg.name : "Select a Profile Image"}
                 </label>
-                <label htmlFor="name">Name: </label>
+                <label htmlFor="name" className="new-profile__label">
+                    Name:{" "}
+                </label>
                 <input
                     type="text"
                     name="name"
@@ -28,14 +30,18 @@ function CreateProfile({ setStep, handleInputChange, handleImageUpload, profileI
                     onChange={handleInputChange}
                     className="new-profile__input"
                 />
-                <label htmlFor="about">About You:</label>
+                <label htmlFor="about" className="new-profile__label">
+                    About You:
+                </label>
                 <textarea
                     name="about"
                     id="about"
                     onChange={handleInputChange}
                     className="new-profile__input new-profile__input--textarea "
                 ></textarea>
-                <label htmlFor="setup">Your Setup: </label>
+                <label htmlFor="setup" className="new-profile__label">
+                    Your Setup:{" "}
+                </label>
                 <textarea
                     name="setup"
                     id="setup"
