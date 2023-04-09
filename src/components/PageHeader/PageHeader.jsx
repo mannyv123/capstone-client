@@ -53,7 +53,7 @@ function PageHeader({ isLoggedIn, setIsLoggedIn }) {
                                     </NavLink>
                                 </li>
                                 <li className="nav__link">
-                                    <NavLink onClick={handleLogout} to="/" className="nav__item">
+                                    <NavLink onClick={handleLogout} to="/home" className="nav__item">
                                         Logout
                                     </NavLink>
                                 </li>
