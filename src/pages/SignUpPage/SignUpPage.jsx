@@ -113,6 +113,7 @@ function SignUpPage() {
                         handleInputChange={handleInputChange}
                         handleImageUpload={handleImageUpload}
                         profileImgUrl={profileImgUrl}
+                        profileImg={profileImg}
                     />
                 )}
             </form>
