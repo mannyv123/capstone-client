@@ -35,32 +35,43 @@ function PageHeader({ isLoggedIn }) {
                                 Home
                             </NavLink>
                         </li>
-                        <li className="nav__link">
-                            {isLoggedIn ? (
+
+                        {isLoggedIn ? (
+                            <li className="nav__link">
                                 <NavLink
                                     className="nav__item"
                                     to={`/profile/${localStorage.getItem("username")}`}
                                 >
                                     My Profile
                                 </NavLink>
-                            ) : (
-                                <NavLink className="nav__item" to="/login">
-                                    Login
-                                </NavLink>
-                            )}
+                            </li>
+                        ) : (
+                            <>
+                                <li className="nav__link">
+                                    <NavLink className="nav__item" to="/login">
+                                        Login
+                                    </NavLink>
+                                </li>
+                                <li className="nav__link">
+                                    <NavLink className="nav__item" to="/signup">
+                                        Sign Up
+                                    </NavLink>
+                                </li>
+                            </>
+                        )}
 
-                            {/* <NavLink
+                        {/* <NavLink
                                 className="nav__item"
                                 to={currentUser ? `/profile/${currentUser}` : "/login"}
                             >
                                 My Profile
                             </NavLink> */}
-                        </li>
-                        <li className="nav__link">
+
+                        {/* <li className="nav__link">
                             <NavLink className="nav__item" to="/signup">
                                 Sign Up
                             </NavLink>
-                        </li>
+                        </li> */}
                         {/* <li className="nav__link">
                             <NavLink className="nav__item" to="/login">
                                 Login
