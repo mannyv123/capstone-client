@@ -55,9 +55,11 @@
         }
     }
 
-    // &__post-title {
-
-    // }
+    &__post-title {
+        @include desktop {
+            margin-bottom: 1rem;
+        }
+    }
 
     &__post-images {
         display: flex;

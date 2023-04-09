@@ -1,10 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-
-import axios from "axios";
-import { API_URL } from "../../App";
 import "./CollectionsList.scss";
 import MapBox from "../MapBox/MapBox";
-// import axios from "axios";
 
 function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
     console.log(postsData);
@@ -15,6 +10,7 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
                     <li className="collections__post" key={post.id}>
                         <div className="collections__details">
                             <h3 className="collections__post-title">{post.title}</h3>
+                            <p className="collections_post-description">{post.description}</p>
                             {showDelete === "yes" ? (
                                 <div
                                     className="collections__delete"
