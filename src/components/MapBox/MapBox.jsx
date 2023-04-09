@@ -44,27 +44,6 @@ function MapBox({ postData }) {
         map.fitBounds(bounds, {
             padding: 50,
         });
-
-        // Add click event listener for markers
-        // map.on("click", "markers", function (e) {
-        //     const coordinates = e.features[0].geometry.coordinates.slice();
-        //     const name = e.features[0].properties.NAME;
-        //     // const description = e.features[0].properties.DESCRIPTIO;
-        //     new mapboxgl.Popup()
-        //         .setLngLat(coordinates)
-        //         .setHTML("<h3>" + name + "</h3>")
-        //         .addTo(map);
-        // });
-
-        // // Change the cursor to a pointer when hovering over markers
-        // map.on("mouseenter", "markers", function () {
-        //     map.getCanvas().style.cursor = "pointer";
-        // });
-
-        // // Change it back to a pointer when it leaves.
-        // map.on("mouseleave", "markers", function () {
-        //     map.getCanvas().style.cursor = "";
-        // });
     }, []);
 
     return (
