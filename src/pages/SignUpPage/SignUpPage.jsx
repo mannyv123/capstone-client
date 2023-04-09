@@ -21,6 +21,7 @@ function SignUpPage() {
     const [values, setValues] = useState(initialValues);
 
     const [profileImg, setProfileImg] = useState(null);
+    const [profileImgUrl, setProfileImgUrl] = useState(null);
     // const [imgDataUrl, setImgDataUrl] = useState(null);
     // const [imgFilename, setImgFilename] = useState("");
 
@@ -56,6 +57,7 @@ function SignUpPage() {
     //Handles updating for image uploads
     const handleImageUpload = (event) => {
         setProfileImg(event.target.files[0]);
+        setProfileImgUrl(URL.createObjectURL(event.target.files[0]));
     };
 
     const handleFormSubmit = (event) => {
@@ -110,6 +112,7 @@ function SignUpPage() {
                         setStep={setStep}
                         handleInputChange={handleInputChange}
                         handleImageUpload={handleImageUpload}
+                        profileImgUrl={profileImgUrl}
                     />
                 )}
             </form>

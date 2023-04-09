@@ -2,8 +2,19 @@
 @use "../../styles/partials/mixins" as *;
 
 .new-profile {
+    &__title {
+        @include desktop {
+            margin-bottom: 2rem;
+        }
+    }
+
     &__form {
         display: flex;
         flex-direction: column;
+    }
+
+    &__btn-container {
+        display: flex;
+        justify-content: space-between;
     }
 }

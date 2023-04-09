@@ -48,7 +48,7 @@ function CreateAccount({ setStep, handleInputChange }) {
                 <button
                     onClick={() => setStep("profile")}
                     type="button"
-                    className="signup__btn signup__btn--next"
+                    className="signup__btn new-account__btn"
                 >
                     Next
                 </button>
