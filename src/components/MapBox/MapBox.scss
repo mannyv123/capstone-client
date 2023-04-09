@@ -1,11 +1,20 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
 .map-content-container {
     position: relative;
     // height: 400px;
     overflow: hidden;
+
+    @include desktop {
+        width: 25%;
+    }
 }
 
 .map-container {
-    height: 400px;
+    @include desktop {
+        height: 100%;
+    }
 }
 
 .sidebar {
