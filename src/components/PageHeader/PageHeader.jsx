@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 import "./PageHeader.scss";
 // import logo from "../../assets/logos/logo-white.svg";
 
-function PageHeader() {
+function PageHeader({ isLoggedIn, setIsLoggedIn }) {
     const [expanded, setExpanded] = useState(true);
-
+    // const [currentUser, setCurrentUser] = useState(localStorage.getItem("username"));
     //Checks if at desktop breakoint; if true, then header always expanded
     useEffect(() => {
         const handleResize = () => {
@@ -22,6 +22,12 @@ function PageHeader() {
         };
     }, []);
 
+    const handleLogout = () => {
+        localStorage.removeItem("username");
+        setIsLoggedIn(false);
+        console.log("log out");
+    };
+
     return (
         <header>
             <nav className={`nav ${expanded ? "nav--expanded" : ""}`}>
@@ -35,27 +41,55 @@ function PageHeader() {
                                 Home
                             </NavLink>
                         </li>
-                        <li className="nav__link">
-                            <NavLink className="nav__item" to="/profile">
+
+                        {isLoggedIn ? (
+                            <>
+                                <li className="nav__link">
+                                    <NavLink
+                                        className="nav__item"
+                                        to={`/profile/${localStorage.getItem("username")}`}
+                                    >
+                                        My Profile
+                                    </NavLink>
+                                </li>
+                                <li className="nav__link">
+                                    <NavLink onClick={handleLogout} to="/" className="nav__item">
+                                        Logout
+                                    </NavLink>
+                                </li>
+                            </>
+                        ) : (
+                            <>
+                                <li className="nav__link">
+                                    <NavLink className="nav__item" to="/login">
+                                        Login
+                                    </NavLink>
+                                </li>
+                                <li className="nav__link">
+                                    <NavLink className="nav__item" to="/signup">
+                                        Sign Up
+                                    </NavLink>
+                                </li>
+                            </>
+                        )}
+
+                        {/* <NavLink
+                                className="nav__item"
+                                to={currentUser ? `/profile/${currentUser}` : "/login"}
+                            >
                                 My Profile
-                            </NavLink>
-                        </li>
-                        <li className="nav__link">
+                            </NavLink> */}
+
+                        {/* <li className="nav__link">
                             <NavLink className="nav__item" to="/signup">
                                 Sign Up
                             </NavLink>
-                        </li>
-                        <li className="nav__link">
+                        </li> */}
+                        {/* <li className="nav__link">
                             <NavLink className="nav__item" to="/login">
                                 Login
                             </NavLink>
-                        </li>
-
-                        <li className="nav__link">
-                            <NavLink to="/logout" className="nav__item">
-                                Logout
-                            </NavLink>
-                        </li>
+                        </li> */}
                     </ul>
                     <div className="nav__btn" onClick={() => setExpanded(!expanded)}></div>
                 </div>

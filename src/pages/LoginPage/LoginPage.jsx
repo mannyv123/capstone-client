@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.scss";
 
-function LoginPage({ setCurrentUser }) {
+function LoginPage({ setIsLoggedIn }) {
     const [user, setUser] = useState("");
     const navigate = useNavigate();
 
@@ -12,10 +12,19 @@ function LoginPage({ setCurrentUser }) {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-
         localStorage.setItem("username", user);
+        setIsLoggedIn(true);
         navigate(`/profile/${user}`);
     };
+
+    // useEffect(() => {
+    //     if (loggedIn) {
+    //         setTimeout(() => {
+    //             localStorage.setItem("username", user);
+    //             navigate(`/profile/${user}`);
+    //         }, 2000);
+    //     }
+    // }, [loggedIn, user, navigate]);
 
     return (
         <section className="login">
