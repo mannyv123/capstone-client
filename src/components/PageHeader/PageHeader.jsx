@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 import "./PageHeader.scss";
 // import logo from "../../assets/logos/logo-white.svg";
 
-function PageHeader() {
+function PageHeader({ isLoggedIn }) {
     const [expanded, setExpanded] = useState(true);
-
+    // const [currentUser, setCurrentUser] = useState(localStorage.getItem("username"));
     //Checks if at desktop breakoint; if true, then header always expanded
     useEffect(() => {
         const handleResize = () => {
@@ -36,20 +36,36 @@ function PageHeader() {
                             </NavLink>
                         </li>
                         <li className="nav__link">
-                            <NavLink className="nav__item" to="/profile">
+                            {isLoggedIn ? (
+                                <NavLink
+                                    className="nav__item"
+                                    to={`/profile/${localStorage.getItem("username")}`}
+                                >
+                                    My Profile
+                                </NavLink>
+                            ) : (
+                                <NavLink className="nav__item" to="/login">
+                                    Login
+                                </NavLink>
+                            )}
+
+                            {/* <NavLink
+                                className="nav__item"
+                                to={currentUser ? `/profile/${currentUser}` : "/login"}
+                            >
                                 My Profile
-                            </NavLink>
+                            </NavLink> */}
                         </li>
                         <li className="nav__link">
                             <NavLink className="nav__item" to="/signup">
                                 Sign Up
                             </NavLink>
                         </li>
-                        <li className="nav__link">
+                        {/* <li className="nav__link">
                             <NavLink className="nav__item" to="/login">
                                 Login
                             </NavLink>
-                        </li>
+                        </li> */}
 
                         <li className="nav__link">
                             <NavLink to="/logout" className="nav__item">
