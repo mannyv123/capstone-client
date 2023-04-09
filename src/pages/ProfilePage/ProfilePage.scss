@@ -2,9 +2,56 @@
 @use "../../styles/partials/mixins" as *;
 
 .profile {
-    padding: 2rem;
+    padding: 2rem 10rem;
+
+    &__details {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__title {
+        margin-bottom: 2rem;
+        width: 100%;
+    }
 
     &__image {
-        width: 100%;
+        width: 50%;
+        height: 20rem;
+
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &__details-text {
+        flex: 1;
+        margin-left: 2rem;
+    }
+
+    &__about-text {
+        margin-bottom: 1rem;
+    }
+
+    &__sub-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 2rem 0;
+    }
+
+    &__add-collection-link {
+        text-decoration: none;
+    }
+
+    &__add-collection {
+        background-color: #2f3238;
+        color: white;
+        border-radius: 0.625rem;
+
+        padding: 0.5rem 1rem;
+
+        &:hover {
+            background-color: #8b8e91;
+            outline: 0.0625rem solid black;
+        }
     }
 }

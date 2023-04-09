@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_URL } from "../../App";
-// import { useState, useEffect } from "react";
 import "./ProfilePage.scss";
 
 function ProfilePage() {
@@ -83,15 +82,23 @@ function ProfilePage() {
                 <div className="profile__details">
                     <h1 className="profile__title">Welcome {user.username}</h1>
                     <img src={user.profileImgUrl} alt="user profile" className="profile__image" />
+                    <div className="profile__details-text">
+                        <h3 className="profile__about-title">About</h3>
+                        <p className="profile__about-text">{user.about}</p>
+                        <h3 className="profile__about-title">Equipment Setup</h3>
+                        <p className="profile__about-text">{user.setup}</p>
+                    </div>
                 </div>
             ) : (
                 ""
             )}
 
-            <Link to="/addcollection">
-                <div className="profile__add-collection">Add New Collection</div>
-            </Link>
-            <h2 className="profile__collections-title">Your Collections</h2>
+            <div className="profile__sub-header">
+                <h2 className="profile__collections-title">Your Collections</h2>
+                <Link className="profile__add-collection-link" to="/addcollection">
+                    <div className="profile__add-collection">Add New Collection</div>
+                </Link>
+            </div>
             <CollectionsList
                 postsData={postsData}
                 handleCollectionDelete={handleCollectionDelete}
