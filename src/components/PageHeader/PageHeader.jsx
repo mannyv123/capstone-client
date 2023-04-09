@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import "./PageHeader.scss";
 // import logo from "../../assets/logos/logo-white.svg";
 
-function PageHeader({ isLoggedIn }) {
+function PageHeader({ isLoggedIn, setIsLoggedIn }) {
     const [expanded, setExpanded] = useState(true);
     // const [currentUser, setCurrentUser] = useState(localStorage.getItem("username"));
     //Checks if at desktop breakoint; if true, then header always expanded
@@ -22,6 +22,12 @@ function PageHeader({ isLoggedIn }) {
         };
     }, []);
 
+    const handleLogout = () => {
+        localStorage.removeItem("username");
+        setIsLoggedIn(false);
+        console.log("log out");
+    };
+
     return (
         <header>
             <nav className={`nav ${expanded ? "nav--expanded" : ""}`}>
@@ -37,14 +43,21 @@ function PageHeader({ isLoggedIn }) {
                         </li>
 
                         {isLoggedIn ? (
-                            <li className="nav__link">
-                                <NavLink
-                                    className="nav__item"
-                                    to={`/profile/${localStorage.getItem("username")}`}
-                                >
-                                    My Profile
-                                </NavLink>
-                            </li>
+                            <>
+                                <li className="nav__link">
+                                    <NavLink
+                                        className="nav__item"
+                                        to={`/profile/${localStorage.getItem("username")}`}
+                                    >
+                                        My Profile
+                                    </NavLink>
+                                </li>
+                                <li className="nav__link">
+                                    <NavLink onClick={handleLogout} to="/" className="nav__item">
+                                        Logout
+                                    </NavLink>
+                                </li>
+                            </>
                         ) : (
                             <>
                                 <li className="nav__link">
@@ -77,12 +90,6 @@ function PageHeader({ isLoggedIn }) {
                                 Login
                             </NavLink>
                         </li> */}
-
-                        <li className="nav__link">
-                            <NavLink to="/logout" className="nav__item">
-                                Logout
-                            </NavLink>
-                        </li>
                     </ul>
                     <div className="nav__btn" onClick={() => setExpanded(!expanded)}></div>
                 </div>

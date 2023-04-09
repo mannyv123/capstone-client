@@ -16,7 +16,7 @@ function App() {
     return (
         <div className="App">
             <BrowserRouter>
-                <PageHeader isLoggedIn={isLoggedIn} />
+                <PageHeader isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/home" element={<Navigate to="/" />} />
