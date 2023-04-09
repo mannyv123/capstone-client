@@ -1,10 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-
-import axios from "axios";
-import { API_URL } from "../../App";
 import "./CollectionsList.scss";
 import MapBox from "../MapBox/MapBox";
-// import axios from "axios";
 
 function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
     console.log(postsData);
@@ -13,8 +8,19 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
             {postsData.map((post) => {
                 return (
                     <li className="collections__post" key={post.id}>
-                        <div className="collections__title-container">
+                        <div className="collections__details">
                             <h3 className="collections__post-title">{post.title}</h3>
+                            <p className="collections_post-description">{post.description}</p>
+                            {showDelete === "yes" ? (
+                                <div
+                                    className="collections__delete"
+                                    onClick={() => handleCollectionDelete(post.user_id, post.id)}
+                                >
+                                    DELETE
+                                </div>
+                            ) : (
+                                ""
+                            )}
                         </div>
                         <div className="collections__post-images">
                             {post.imageUrls.map((image, index) => {
@@ -28,17 +34,7 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
                                 );
                             })}
                         </div>
-                        {showDelete === "yes" ? (
-                            <div
-                                className="collections__delete"
-                                onClick={() => handleCollectionDelete(post.user_id, post.id)}
-                            >
-                                DELETE
-                            </div>
-                        ) : (
-                            ""
-                        )}
-                        <MapBox postData={post} />
+                        <MapBox className="collections__mapbox" postData={post} />
                     </li>
                 );
             })}

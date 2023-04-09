@@ -69,12 +69,10 @@ function MapBox({ postData }) {
 
     return (
         <div className="map-content-container">
-            <div>
-                {/* <div className="sidebar">
+            {/* <div className="sidebar">
                     Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
                 </div> */}
-                <div ref={mapContainer} className="map-container" />
-            </div>
+            <div ref={mapContainer} className="map-container" />
         </div>
     );
 }
