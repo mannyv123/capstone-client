@@ -19,10 +19,14 @@ function CreateProfile({ setStep, handleInputChange, handleImageUpload }) {
                 <textarea name="about" id="about" onChange={handleInputChange}></textarea>
                 <label htmlFor="setup">Your Setup: </label>
                 <textarea name="setup" id="setup" onChange={handleInputChange}></textarea>
-                <button onClick={() => setStep("account")} type="button" className="new-profile__btn--back">
+                <button
+                    onClick={() => setStep("account")}
+                    type="button"
+                    className="signup__btn signup__btn--back"
+                >
                     Back
                 </button>
-                <button className="new-profile__btn--complete" type="submit">
+                <button className="signup__btn signup__btn--complete" type="submit">
                     Finish
                 </button>
             </div>
