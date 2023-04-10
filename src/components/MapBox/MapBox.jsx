@@ -29,7 +29,7 @@ function MapBox({ postData }) {
         // Create default markers
         const bounds = new mapboxgl.LngLatBounds();
         postData.imageInfo.map((image) => {
-            const marker = new mapboxgl.Marker().setLngLat([image.latitude, image.longitude]).addTo(map);
+            const marker = new mapboxgl.Marker().setLngLat([image.longitude, image.latitude]).addTo(map);
             const popup = new mapboxgl.Popup().setHTML("<h3>" + image.title + "</h3>");
             marker.setPopup(popup);
 
