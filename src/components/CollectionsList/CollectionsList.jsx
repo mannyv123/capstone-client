@@ -1,5 +1,6 @@
 import "./CollectionsList.scss";
 import MapBox from "../MapBox/MapBox";
+import deleteIcon from "../../assets/icons/icon-delete.svg";
 
 function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
     console.log(postsData);
@@ -10,13 +11,13 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
                     <li className="collections__post" key={post.id}>
                         <div className="collections__details">
                             <h3 className="collections__post-title">{post.title}</h3>
-                            <p className="collections_post-description">{post.description}</p>
+                            <p className="collections__post-description">{post.description}</p>
                             {showDelete === "yes" ? (
                                 <div
                                     className="collections__delete"
                                     onClick={() => handleCollectionDelete(post.user_id, post.id)}
                                 >
-                                    DELETE
+                                    <img src={deleteIcon} alt="delete" className="collections__delete-btn" />
                                 </div>
                             ) : (
                                 ""
