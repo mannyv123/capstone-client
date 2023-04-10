@@ -13,7 +13,7 @@
     &__post {
         // border-radius: 1.25rem 1.25rem 0 0;
         // border-radius: 1.25rem;
-        cursor: pointer;
+        // cursor: pointer;
         // padding-top: 1rem;
 
         //card styling
@@ -37,8 +37,7 @@
 
         &:hover {
             border: 1px solid black;
-            transform: scale(1.005);
-            z-index: 1;
+            // z-index: 1;
         }
         overflow: hidden;
 
@@ -62,14 +61,28 @@
         // padding: 1rem 1rem 0 0;
         @include desktop {
             width: 25%;
-
             padding: 1rem;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
     }
 
     &__post-title {
         @include desktop {
             margin-bottom: 1rem;
+        }
+    }
+
+    &__post-description {
+        flex: 1;
+    }
+
+    &__delete-btn {
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.2);
         }
     }
 
