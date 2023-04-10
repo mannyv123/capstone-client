@@ -2,8 +2,53 @@
 @use "../../styles/partials/mixins" as *;
 
 .login {
+    @include desktop {
+        padding: 5rem 35rem;
+    }
+
+    &__title {
+        @include desktop {
+            margin-bottom: 2rem;
+        }
+    }
+
     &__form {
         display: flex;
         flex-direction: column;
+    }
+
+    &__input-label {
+        margin-bottom: 0.25rem;
+    }
+
+    &__input {
+        border: 0.0625rem solid grey;
+        margin-bottom: 0.5rem;
+        border-radius: 5px;
+        padding: 0.5rem;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    &__btn {
+        background-color: #2f3238;
+        color: white;
+        border-radius: 0.625rem;
+
+        padding: 0.5rem 1rem;
+        margin-top: 3rem;
+        width: 40%;
+
+        border: none;
+        cursor: pointer;
+
+        align-self: flex-end;
+
+        &:hover {
+            background-color: #8b8e91;
+            outline: 0.0625rem solid black;
+        }
     }
 }
