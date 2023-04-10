@@ -13,6 +13,7 @@ function MapBox({ postData }) {
     const [lng, setLng] = useState(-87.65);
     const [lat, setLat] = useState(41.84);
     const [zoom, setZoom] = useState(10);
+    const [geoData, setGeoData] = useState(true);
 
     console.log("single post data: ", postData);
 
@@ -47,16 +48,24 @@ function MapBox({ postData }) {
             map.fitBounds(bounds, {
                 padding: 50,
             });
+        } else {
+            setGeoData(false);
         }
     }, []);
-
+    //hello
     return (
-        <div className="map-content-container">
-            {/* <div className="sidebar">
+        <>
+            {geoData ? (
+                <div className="map-content-container">
+                    {/* <div className="sidebar">
                     Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
                 </div> */}
-            <div ref={mapContainer} className="map-container" />
-        </div>
+                    <div ref={mapContainer} className="map-container"></div>
+                </div>
+            ) : (
+                <></>
+            )}
+        </>
     );
 }
 
