@@ -171,7 +171,9 @@ function AddCollectionPage() {
                         </div>
                     ))}
                 </div>
-                <button type="submit">Create Collection</button>
+                <button className="new-collection__btn" type="submit">
+                    Create Collection
+                </button>
             </form>
         </section>
     );
