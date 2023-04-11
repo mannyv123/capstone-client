@@ -1,11 +1,18 @@
 import "./CollectionsList.scss";
 import MapBox from "../MapBox/MapBox";
 import deleteIcon from "../../assets/icons/icon-delete.svg";
+import { useState } from "react";
+import CollectionViewModal from "../CollectionViewModal/CollectionViewModal";
 
 function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
+    const [isOpen, setIsOpen] = useState(false);
     console.log(postsData);
     return (
         <ul className="collections">
+            {isOpen && <CollectionViewModal setIsOpen={setIsOpen} />}
+            <button type="button" onClick={() => setIsOpen(true)}>
+                MODAL
+            </button>
             {postsData.map((post) => {
                 return (
                     <li className="collections__post" key={post.id}>
