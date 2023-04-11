@@ -10,13 +10,10 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
     return (
         <ul className="collections">
             {isOpen && <CollectionViewModal setIsOpen={setIsOpen} />}
-            <button type="button" onClick={() => setIsOpen(true)}>
-                MODAL
-            </button>
             {postsData.map((post) => {
                 return (
                     <li className="collections__post" key={post.id}>
-                        <div className="collections__details">
+                        <div className="collections__details" onClick={() => setIsOpen(true)}>
                             <h3 className="collections__post-title">{post.title}</h3>
                             <p className="collections__post-description">{post.description}</p>
                             {showDelete === "yes" ? (
@@ -30,7 +27,7 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
                                 ""
                             )}
                         </div>
-                        <div className="collections__post-images">
+                        <div className="collections__post-images" onClick={() => setIsOpen(true)}>
                             {post.imageUrls.map((image, index) => {
                                 return (
                                     <img
