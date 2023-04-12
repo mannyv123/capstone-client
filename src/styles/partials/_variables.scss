@@ -1,2 +1,6 @@
+@use "./fonts" as *;
+
 $tablet-breakpoint: 768px;
 $desktop-breakpoint: 1280px;
+
+$primary-font: "Montserrat", sans-serif;
