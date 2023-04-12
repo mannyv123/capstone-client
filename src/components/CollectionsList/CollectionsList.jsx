@@ -5,12 +5,14 @@ import { useState } from "react";
 import CollectionViewModal from "../CollectionViewModal/CollectionViewModal";
 
 function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedPost, setSelectedPost] = useState({});
-    console.log(postsData);
+    const [isOpen, setIsOpen] = useState(false); //Tracks if modal is open or not
+    const [selectedPost, setSelectedPost] = useState({}); //Used to pass selected post when clicked to modal
+
     return (
         <ul className="collections">
+            {/* Shows Collection View Modal component only when isOpen set to true */}
             {isOpen && <CollectionViewModal setIsOpen={setIsOpen} selectedPost={selectedPost} />}
+            {/* Map function to render individual posts */}
             {postsData.map((post) => {
                 return (
                     <li className="collections__post" key={post.id}>
@@ -41,6 +43,7 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
                                 setSelectedPost(post);
                             }}
                         >
+                            {/* Map function to render all images for an individual post */}
                             {post.imageUrls.map((image, index) => {
                                 return (
                                     <img
@@ -52,6 +55,7 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
                                 );
                             })}
                         </div>
+                        {/* Component that renders the map with markers if location data present within postdata */}
                         <MapBox className="collections__mapbox" postData={post} />
                     </li>
                 );
