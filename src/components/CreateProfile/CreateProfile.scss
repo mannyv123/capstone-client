@@ -21,7 +21,7 @@
             object-fit: contain;
             object-position: center;
 
-            background-color: #2f3238;
+            background-color: $tertiary-color;
             border-radius: 0.625rem;
         }
     }
@@ -34,8 +34,8 @@
     }
 
     &__select-img {
-        background-color: #2f3238;
-        color: white;
+        background-color: $primary-color-dark;
+        color: $primary-color-light;
         border-radius: 0.625rem;
 
         padding: 0.5rem 1rem;
@@ -49,8 +49,8 @@
         text-align: center;
 
         &:hover {
-            background-color: #8b8e91;
-            outline: 0.0625rem solid black;
+            background-color: $tertiary-color;
+            outline: 0.0625rem solid $primary-color-dark;
         }
     }
 
@@ -61,7 +61,9 @@
     &__input {
         @include desktop {
             margin-bottom: 0.5rem;
-            border: 0.0625rem solid grey;
+            border: 0.0625rem solid $tertiary-color;
+            color: $primary-color-dark;
+            font-family: $primary-font;
             border-radius: 5px;
             padding: 0.5rem;
         }
