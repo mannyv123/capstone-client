@@ -46,6 +46,14 @@
         }
     }
 
+    &__close {
+        z-index: 3;
+        // width: 1rem;
+        position: absolute;
+        right: 0.9375rem;
+        cursor: pointer;
+    }
+
     // &__slider {
     //     position: relative;
     //     height: 100%;
