@@ -4,6 +4,7 @@ import "./LandingPage.scss";
 import axios from "axios";
 import { API_URL } from "../../App";
 
+//Landing Page for website; displays recent 5 posts
 function LandingPage() {
     const [recentPostData, setRecentPostData] = useState([]); //use state to track recent posts from get call
 

@@ -4,6 +4,7 @@ import deleteIcon from "../../assets/icons/icon-delete.svg";
 import { useState } from "react";
 import CollectionViewModal from "../CollectionViewModal/CollectionViewModal";
 
+//Component used to render the list of posts (based on postsData passed to it via props)
 function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
     const [isOpen, setIsOpen] = useState(false); //Tracks if modal is open or not
     const [selectedPost, setSelectedPost] = useState({}); //Used to pass selected post when clicked to modal
