@@ -3,28 +3,20 @@ import { useNavigate } from "react-router-dom";
 import "./LoginPage.scss";
 
 function LoginPage({ setIsLoggedIn }) {
-    const [user, setUser] = useState("");
+    const [user, setUser] = useState(""); //tracks username
     const navigate = useNavigate();
 
+    //Handles username input
     const handleUsernameInput = (event) => {
         setUser(event.target.value);
     };
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        localStorage.setItem("username", user);
-        setIsLoggedIn(true);
-        navigate(`/profile/${user}`);
+        localStorage.setItem("username", user); //saves username to local storage
+        setIsLoggedIn(true); //sets logged in to true
+        navigate(`/profile/${user}`); //navigates to profile page based on username
     };
-
-    // useEffect(() => {
-    //     if (loggedIn) {
-    //         setTimeout(() => {
-    //             localStorage.setItem("username", user);
-    //             navigate(`/profile/${user}`);
-    //         }, 2000);
-    //     }
-    // }, [loggedIn, user, navigate]);
 
     return (
         <section className="login">
