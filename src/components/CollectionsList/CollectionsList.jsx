@@ -9,6 +9,12 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
     const [isOpen, setIsOpen] = useState(false); //Tracks if modal is open or not
     const [selectedPost, setSelectedPost] = useState({}); //Used to pass selected post when clicked to modal
 
+    console.log("posts data", postsData);
+
+    if (postsData === "no posts") {
+        return <div>No posts</div>;
+    }
+
     return (
         <ul className="collections">
             {/* Shows Collection View Modal component only when isOpen set to true */}
@@ -20,7 +26,6 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
                         <div
                             className="collections__details"
                             onClick={() => {
-                                setIsOpen(true);
                                 setSelectedPost(post);
                             }}
                         >
