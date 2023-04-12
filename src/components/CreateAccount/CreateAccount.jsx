@@ -1,5 +1,6 @@
 import "./CreateAccount.scss";
 
+//Captures account details (step 1 in sign up process)
 function CreateAccount({ setStep, handleInputChange }) {
     return (
         <section className="new-account">

@@ -8,9 +8,11 @@ import AddCollectionPage from "./pages/AddCollectionPage/AddCollectionPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { useState } from "react";
 
-export const API_URL = "http://localhost:5001";
+//API URL
+export const API_URL = process.env.REACT_APP_API_URL;
 
 function App() {
+    //use state variable to track when a user is logged in; will change header nav links based on logged in status
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     return (
@@ -20,7 +22,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/home" element={<Navigate to="/" />} />
-                    <Route path="/signup" element={<SignUpPage />} />
+                    <Route path="/signup" element={<SignUpPage setIsLoggedIn={setIsLoggedIn} />} />
                     <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn} />} />
                     <Route path="/profile/:username" element={<ProfilePage />} />
                     <Route path="/addcollection" element={<AddCollectionPage />} />

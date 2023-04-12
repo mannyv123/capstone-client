@@ -10,19 +10,6 @@ function ProfilePage() {
     const [user, setUser] = useState(null);
     const [postsData, setPostsData] = useState([]);
 
-    // const myPromise = new Promise((resolve, reject) => {
-    //     getUser();
-    // });
-
-    //Get the current user data
-    // useEffect(() => {
-    //     myPromise.then();
-
-    //     if (user) {
-    //         getPosts(user.id);
-    //     }
-    // }, []);
-
     useEffect(() => {
         getUser();
     }, []);
@@ -67,15 +54,12 @@ function ProfilePage() {
 
     async function deletePost(userId, postId) {
         try {
-            const resp = await axios.delete(`${API_URL}/users/${userId}/posts/${postId}`);
-            console.log("delete resp: ", resp);
+            await axios.delete(`${API_URL}/users/${userId}/posts/${postId}`);
         } catch (error) {
             console.error(error);
         }
     }
 
-    console.log("hello");
-    console.log("user: ", user);
     return (
         <section className="profile">
             {user ? (

@@ -4,20 +4,26 @@ import deleteIcon from "../../assets/icons/icon-delete.svg";
 import { useState } from "react";
 import CollectionViewModal from "../CollectionViewModal/CollectionViewModal";
 
+//Component used to render the list of posts (based on postsData passed to it via props)
 function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedPost, setSelectedPost] = useState({});
-    console.log(postsData);
+    const [isOpen, setIsOpen] = useState(false); //Tracks if modal is open or not
+    const [selectedPost, setSelectedPost] = useState({}); //Used to pass selected post when clicked to modal
+
+    if (postsData === "no posts") {
+        return <p>No Collections yet. Click on "Add New Collection" to create one!</p>;
+    }
+
     return (
         <ul className="collections">
+            {/* Shows Collection View Modal component only when isOpen set to true */}
             {isOpen && <CollectionViewModal setIsOpen={setIsOpen} selectedPost={selectedPost} />}
+            {/* Map function to render individual posts */}
             {postsData.map((post) => {
                 return (
                     <li className="collections__post" key={post.id}>
                         <div
                             className="collections__details"
                             onClick={() => {
-                                setIsOpen(true);
                                 setSelectedPost(post);
                             }}
                         >
@@ -41,6 +47,7 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
                                 setSelectedPost(post);
                             }}
                         >
+                            {/* Map function to render all images for an individual post */}
                             {post.imageUrls.map((image, index) => {
                                 return (
                                     <img
@@ -52,6 +59,7 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
                                 );
                             })}
                         </div>
+                        {/* Component that renders the map with markers if location data present within postdata */}
                         <MapBox className="collections__mapbox" postData={post} />
                     </li>
                 );

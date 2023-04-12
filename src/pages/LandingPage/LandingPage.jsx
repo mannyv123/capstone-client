@@ -4,18 +4,19 @@ import "./LandingPage.scss";
 import axios from "axios";
 import { API_URL } from "../../App";
 
+//Landing Page for website; displays recent 5 posts
 function LandingPage() {
-    const [recentPostData, setRecentPostData] = useState([]);
+    const [recentPostData, setRecentPostData] = useState([]); //use state to track recent posts from get call
 
+    //Loads recent posts on page render
     useEffect(() => {
         getRecentPosts();
     }, []);
 
-    //Get recent posts
+    //Get recent posts function
     async function getRecentPosts() {
         try {
             const resp = await axios.get(`${API_URL}/posts`);
-            console.log(resp.data);
             setRecentPostData(resp.data);
         } catch (error) {
             console.error(error);
