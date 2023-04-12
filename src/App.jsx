@@ -8,7 +8,7 @@ import AddCollectionPage from "./pages/AddCollectionPage/AddCollectionPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { useState } from "react";
 
-export const API_URL = "http://localhost:5001";
+export const API_URL = process.env.REACT_APP_API_URL;
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
