@@ -3,20 +3,14 @@
 
 .nav {
     width: 100%;
-    background-color: #232625;
-    // height: 3rem;
-
-    // display: flex;
-    // justify-content: center;
-
-    color: #ffffff;
+    background-color: $primary-color-dark;
+    color: $primary-color-light;
 
     &--expanded {
         height: 13rem;
 
         @include desktop {
             height: 4rem;
-
             padding: 0 2rem;
         }
     }
@@ -30,17 +24,10 @@
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-
             width: 100%;
             height: 100%;
         }
     }
-
-    // &__title {
-    // }
-    // &__logo {
-    //     width: 4rem;
-    // }
 
     &__list {
         margin: 2rem 0;
@@ -57,18 +44,12 @@
         }
     }
 
-    // &__link {
-    // }
-
     &__item {
         text-decoration: none;
-        color: #ffffff;
+        color: $primary-color-light;
 
         margin: 0.5rem 0.25rem;
         padding: 0.5rem 1rem;
-        // margin: 0 0.25rem;
-
-        // background-color: lightblue;
         border-radius: 0.625rem;
 
         &:last-child {
@@ -76,10 +57,11 @@
         }
 
         &:hover {
-            background-color: #4c5460;
+            background-color: $tertiary-color;
         }
     }
 
+    // needed only for mobile view; not fully implemented
     &__btn {
         width: 1rem;
         height: 1rem;
@@ -93,5 +75,5 @@
 }
 
 .active {
-    background-color: #090a0d;
+    background-color: $nav-active-color;
 }
