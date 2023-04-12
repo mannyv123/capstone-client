@@ -16,7 +16,9 @@
     }
 
     &__input {
-        border: 0.0625rem solid grey;
+        border: 0.0625rem solid $tertiary-color;
+        color: $primary-color-dark;
+        font-family: $primary-font;
         margin-bottom: 0.5rem;
         border-radius: 5px;
         padding: 0.5rem;

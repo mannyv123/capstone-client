@@ -1,70 +1,128 @@
-# Getting Started with Create React App
+# Collections
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Collections is a platform for professional and amateur photographers to showcase their work through albums (called "Collections"). Users can create collections that show under their profile. The platform provides a supportive community for photographers to connect and grow their audience.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+-   Create new user with profile
+-   Create new posts called Collections (contain a collection of images)
+-   Can add coordinate data to posts to indicate where photographs were taken (markers will be rendered on a map)
+-   Can delete posts
+-   view fullscreen images from posts
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Client:** React, SASS, Mapbox GL JS, Axios, React-Router-Dom, React-Icons
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Server:** Node, Express, AWS S3 (AWS SDK: Client-S3 and S3-Request-Presigner), MySQL2, Knex, Multer, Nodemon
 
-### `npm test`
+## Run Locally
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Server Setup:
 
-### `npm run build`
+Clone the project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+  git clone https://github.com/mannyv123/capstone-server.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Go to the project directory
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+  cd capstone-server
+```
 
-### `npm run eject`
+Install dependencies
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+  npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Setup .env file for server
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+  (see .env.sample file)
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Start the server
 
-## Learn More
+```bash
+  npm run dev
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Client Setup:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Clone the project
 
-### Code Splitting
+```bash
+  git clone https://github.com/mannyv123/capstone-client.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Go to the project directory
 
-### Analyzing the Bundle Size
+```bash
+  cd capstone-client
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Install dependencies
 
-### Making a Progressive Web App
+```bash
+  npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Setup .env file for client
 
-### Advanced Configuration
+```bash
+  (see .env.sample file)
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Start the client
 
-### Deployment
+```bash
+  npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Environment Variables
 
-### `npm run build` fails to minify
+To run this project, you will need to add the following environment variables to your .env file
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Client
+
+`REACT_APP_API_URL`
+
+### Server
+
+`PORT`
+
+#### DATABASE VARIABLES
+
+`DB_LOCAL_DBNAME`
+`DB_LOCAL_USER`
+`DB_LOCAL_PASSWORD`
+
+#### AWS S3
+
+`BUCKET_NAME`
+`BUCKET_REGION`
+`ACCESS_KEY`
+`SECRET_ACCESS_KEY`
+
+## Roadmap
+
+-   Following other users
+
+-   Commenting and liking posts
+
+-   Image tagging (using API from Imagga)
+
+-   Search (users, posts, tags)
+
+-   Optimize image storage and loading
+
+## Authors
+
+-   [@mannyv123](https://github.com/mannyv123)
+
+## Feedback
+
+If you have any feedback, please reach out to me at virdi_manjot@hotmail.com
