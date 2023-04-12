@@ -41,6 +41,7 @@ function MapBox({ postData }) {
                 //Extend the bounds object with each LngLat coordinate
                 bounds.extend(marker.getLngLat());
             }
+            return null; //only adding markers and not modifying original array, therefore returning null after markers/popups added
         });
 
         //Fit the map to the bounds of the markers; if no markers added, set geo data to false and no map is rendered
