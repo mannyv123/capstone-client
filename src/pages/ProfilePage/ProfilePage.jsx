@@ -6,10 +6,11 @@ import { API_URL } from "../../App";
 import "./ProfilePage.scss";
 
 function ProfilePage() {
-    const { username } = useParams();
+    const { username } = useParams(); //pull which user profile to load based on params in url
     const [user, setUser] = useState(null);
     const [postsData, setPostsData] = useState([]);
 
+    //Get user details on load
     useEffect(() => {
         getUser();
     }, []);
@@ -17,12 +18,11 @@ function ProfilePage() {
     //If there is a user, get the related posts of that user
     useEffect(() => {
         if (user) {
-            console.log(" I AM GEtTING POST");
             getPosts(user.id);
         }
     }, [user]);
 
-    // //Get User Details
+    //Get User Details; set user to response
     async function getUser() {
         try {
             const resp = await axios.get(`${API_URL}/users/${username}`);
@@ -32,26 +32,24 @@ function ProfilePage() {
         }
     }
 
-    //Get User Posts
+    //Get User Posts; save to postsData
     async function getPosts(userId) {
         try {
             const resp = await axios.get(`${API_URL}/users/${userId}/posts`);
-
-            console.log(" resp : ", resp.data);
             setPostsData(resp.data);
         } catch (error) {
             console.error(error);
         }
     }
 
-    //Delete Posts
+    //Delete Posts and then reload posts data
     const handleCollectionDelete = (userId, postId) => {
-        console.log("delete", postId);
         deletePost(userId, postId).then(() => {
-            getPosts(userId); //might be able to avoid an api call and just set posts data to something else
+            getPosts(userId);
         });
     };
 
+    //Delete post async/await function api call
     async function deletePost(userId, postId) {
         try {
             await axios.delete(`${API_URL}/users/${userId}/posts/${postId}`);
