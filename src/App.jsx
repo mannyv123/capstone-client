@@ -8,9 +8,11 @@ import AddCollectionPage from "./pages/AddCollectionPage/AddCollectionPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { useState } from "react";
 
+//API URL
 export const API_URL = process.env.REACT_APP_API_URL;
 
 function App() {
+    //use state variable to track when a user is logged in; will change header nav links based on logged in status
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     return (
