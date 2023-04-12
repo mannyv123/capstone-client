@@ -40,7 +40,7 @@ function AddCollectionPage() {
 
         formData.append("imageInfo", JSON.stringify(imageInfo));
 
-        createPost(formData).then((res) => {
+        createPost(formData).then(() => {
             navigate(`/profile/${currentUser}`);
         });
     };
