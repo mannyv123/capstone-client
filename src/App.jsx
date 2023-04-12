@@ -22,7 +22,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/home" element={<Navigate to="/" />} />
-                    <Route path="/signup" element={<SignUpPage />} />
+                    <Route path="/signup" element={<SignUpPage setIsLoggedIn={setIsLoggedIn} />} />
                     <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn} />} />
                     <Route path="/profile/:username" element={<ProfilePage />} />
                     <Route path="/addcollection" element={<AddCollectionPage />} />

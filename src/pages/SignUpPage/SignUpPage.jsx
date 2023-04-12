@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import CreateAccount from "../../components/CreateAccount/CreateAccount";
 import CreateProfile from "../../components/CreateProfile/CreateProfile";
 import "./SignUpPage.scss";
-import { API_URL } from "../../App"; //temporary
+import { API_URL } from "../../App";
 
 const initialValues = {
     username: "",
@@ -15,40 +15,15 @@ const initialValues = {
     setup: "",
 };
 
-function SignUpPage() {
-    const [step, setStep] = useState("account");
+//Component for Sign Up Page
+function SignUpPage({ setIsLoggedIn }) {
+    const [step, setStep] = useState("account"); //tracks whether to render create account component or create profile component
     const navigate = useNavigate();
-    const [values, setValues] = useState(initialValues);
+    const [values, setValues] = useState(initialValues); //tracks form inputs
+    const [profileImg, setProfileImg] = useState(null); //tracks uploaded profile image
+    const [profileImgUrl, setProfileImgUrl] = useState(null); //used for preview of profile image
 
-    const [profileImg, setProfileImg] = useState(null);
-    const [profileImgUrl, setProfileImgUrl] = useState(null);
-    // const [imgDataUrl, setImgDataUrl] = useState(null);
-    // const [imgFilename, setImgFilename] = useState("");
-
-    //useEffect to read the selected file and set the file data url
-    useEffect(() => {
-        let fileReader,
-            isCancel = false;
-        if (profileImg) {
-            fileReader = new FileReader();
-            fileReader.onload = (event) => {
-                const { result } = event.target;
-                if (result && !isCancel) {
-                    // setImgDataUrl(result);
-                    // setImgFilename(currentUser.profileImg.name);
-                }
-            };
-            fileReader.readAsDataURL(profileImg);
-        }
-        return () => {
-            isCancel = true;
-            if (fileReader && fileReader.readyState === 1) {
-                fileReader.abort();
-            }
-        };
-    }, [profileImg]);
-
-    //Handles updating form input values
+    //Handles form input values
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setValues({ ...values, [name]: value });
@@ -60,41 +35,38 @@ function SignUpPage() {
         setProfileImgUrl(URL.createObjectURL(event.target.files[0]));
     };
 
+    //Handles form submission
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
-        // values.imgDataUrl = imgDataUrl;
-
+        //Append text inputs to formData object
         const formData = new FormData();
         for (const key in values) {
             formData.append(key, values[key]);
-            // console.log(key, values[key]);
         }
 
-        // formData.append("username", values.username);
-
-        // values.profileImg = profileImg;
+        //Append profile image data to formData
         formData.append("profileImg", profileImg);
 
-        for (const pair of formData.entries()) {
-            console.log(pair[0], pair[1]);
-        }
-        createNewUser(formData);
-
+        //set new user as logged in and save to local storage
         localStorage.setItem("username", values.username);
-        navigate(`/profile/${values.username}`);
+
+        //Post new user data via API
+        createNewUser(formData).then(() => {
+            //navigate to profile page of new user
+            setIsLoggedIn(true);
+            navigate(`/profile/${values.username}`);
+        });
     };
 
+    //Async/await function to create new user
     async function createNewUser(newUser) {
         try {
-            const resp = await axios.post(`${API_URL}/users`, newUser);
-            console.log(resp);
+            await axios.post(`${API_URL}/users`, newUser);
         } catch (error) {
             console.error(error);
         }
     }
-
-    console.log(values);
 
     return (
         <section className="signup">
