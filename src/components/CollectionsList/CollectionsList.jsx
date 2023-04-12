@@ -12,7 +12,7 @@ function CollectionsList({ postsData, handleCollectionDelete, showDelete }) {
     console.log("posts data", postsData);
 
     if (postsData === "no posts") {
-        return <div>No posts</div>;
+        return <p>No Collections yet. Click on "Add New Collection" to create one!</p>;
     }
 
     return (
