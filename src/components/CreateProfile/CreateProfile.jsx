@@ -1,6 +1,6 @@
-// import { useState } from "react";
 import "./CreateProfile.scss";
 
+//Captures new profile details (step 2 in sign up process)
 function CreateProfile({ setStep, handleInputChange, handleImageUpload, profileImgUrl, profileImg }) {
     return (
         <section className="new-profile">
