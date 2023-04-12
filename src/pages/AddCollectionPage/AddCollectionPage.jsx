@@ -9,26 +9,29 @@ const initialValues = {
     description: "",
 };
 
-function AddCollectionPage() {
-    const [userId, setUserId] = useState("");
-    const [values, setValues] = useState(initialValues);
-    const [images, setImages] = useState(null);
-    const [imagesArray, setImagesArray] = useState([]);
-    const [imageInfo, setImageInfo] = useState([]);
-    const currentUser = localStorage.getItem("username");
+//Component to collect details for new collection post
 
+function AddCollectionPage() {
+    const [userId, setUserId] = useState(""); //used for creation of new post to correct user
+    const [values, setValues] = useState(initialValues); //tracks input values for post title and description
+    const [images, setImages] = useState(null); //tracks uploaded image files
+    const [imagesArray, setImagesArray] = useState([]); //used for image previews to map out input fields for each image
+    const [imageInfo, setImageInfo] = useState([]); //tracks image info for each image
+    const currentUser = localStorage.getItem("username"); //retreives username from local storage
+    const navigate = useNavigate();
+
+    //get user details on load
     useEffect(() => {
         getUser();
     }, []);
 
-    const navigate = useNavigate();
+    //Handle submission of new collection details and images
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
         const formData = new FormData();
         for (const key in values) {
             formData.append(key, values[key]);
-            // console.log(key, values[key]);
         }
 
         for (let i = 0; i < images.length; i++) {
@@ -37,13 +40,7 @@ function AddCollectionPage() {
 
         formData.append("imageInfo", JSON.stringify(imageInfo));
 
-        for (const pair of formData.entries()) {
-            console.log(pair[0], pair[1]);
-        }
-
         createPost(formData).then((res) => {
-            console.log("res after create: ", res);
-
             navigate(`/profile/${currentUser}`);
         });
     };
@@ -54,26 +51,24 @@ function AddCollectionPage() {
         setValues({ ...values, [name]: value });
     };
 
-    //Handle image uploads
+    //Handle image uploads; create url to use for image previews
     const handleImageUploads = (event) => {
         setImages(event.target.files);
-
         setImagesArray(Object.entries(event.target.files).map((event) => URL.createObjectURL(event[1])));
     };
 
-    //Handle image info
+    //Handle image info for each image
     const handleImageInfo = (event, index) => {
         const { name, value } = event.target;
         const newImageInfo = [...imageInfo];
         newImageInfo[index] = { ...newImageInfo[index], [name]: value };
         setImageInfo(newImageInfo);
     };
-    console.log("imageinfo: ", imageInfo);
+
     //Create new post
     async function createPost(newPost) {
         try {
-            const resp = await axios.post(`${API_URL}/users/${userId}/posts`, newPost);
-            console.log("resp from create post: ", resp);
+            await axios.post(`${API_URL}/users/${userId}/posts`, newPost);
         } catch (error) {
             console.error(error);
         }
@@ -83,16 +78,12 @@ function AddCollectionPage() {
     async function getUser() {
         try {
             const resp = await axios.get(`${API_URL}/users/${currentUser}`);
-            console.log("get user response", resp);
             setUserId(resp.data[0].id);
         } catch (error) {
             console.error(error);
         }
     }
 
-    console.log(currentUser);
-    console.log(images);
-    console.log(imagesArray);
     return (
         <section className="new-collection">
             <h1 className="new-collection__title">Add New Collection</h1>
@@ -137,7 +128,11 @@ function AddCollectionPage() {
                     {imagesArray.length > 0 && <h3 className="new-collection__sub-hdr">Add Photo Details</h3>}
                     {imagesArray.map((image, index) => (
                         <div key={index} className="new-collection__image-details">
-                            <img src={image} alt="photo" className="new-collection__image-preview" />
+                            <img
+                                src={image}
+                                alt="collection item"
+                                className="new-collection__image-preview"
+                            />
                             <label className="new-collection__label" htmlFor={`imgTitle${index}`}>
                                 Image Title:
                             </label>
