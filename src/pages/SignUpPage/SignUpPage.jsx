@@ -22,6 +22,7 @@ function SignUpPage({ setIsLoggedIn }) {
     const [values, setValues] = useState(initialValues); //tracks form inputs
     const [profileImg, setProfileImg] = useState(null); //tracks uploaded profile image
     const [profileImgUrl, setProfileImgUrl] = useState(null); //used for preview of profile image
+    const [isError, setIsError] = useState(false);
 
     //Handles form input values
     const handleInputChange = (event) => {
@@ -35,9 +36,34 @@ function SignUpPage({ setIsLoggedIn }) {
         setProfileImgUrl(URL.createObjectURL(event.target.files[0]));
     };
 
+    //Form Validation
+    const isFormValid = () => {
+        setIsError(false);
+
+        if (
+            values.username === "" ||
+            values.password === "" ||
+            values.email === "" ||
+            values.name === "" ||
+            values.about === "" ||
+            values.setup === "" ||
+            profileImg === null
+        ) {
+            setIsError(true);
+            setStep("account");
+            return false;
+        }
+
+        return true;
+    };
+
     //Handles form submission
     const handleFormSubmit = (event) => {
         event.preventDefault();
+
+        if (!isFormValid()) {
+            return console.error("Please fix form errors");
+        }
 
         //Append text inputs to formData object
         const formData = new FormData();
@@ -71,6 +97,11 @@ function SignUpPage({ setIsLoggedIn }) {
     return (
         <section className="signup">
             <h1 className="signup__title">Sign Up</h1>
+            {isError && (
+                <p className="error-msg error-msg--signup">
+                    Missing Information! Please fill out form completely.
+                </p>
+            )}
             <form
                 action=""
                 className="signup__form"
