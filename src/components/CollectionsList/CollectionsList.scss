@@ -1,0 +1,119 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.collections {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    // gap: 0.25rem;
+
+    // border-radius: 1.25rem;
+    // overflow: hidden;
+
+    &__post {
+        // border-radius: 1.25rem 1.25rem 0 0;
+        // border-radius: 1.25rem;
+        // cursor: pointer;
+        // padding-top: 1rem;
+
+        //card styling
+        background-color: #dbded1;
+        border: 1px solid white;
+        // box-shadow: 9px 9px 18px #8b8b8b, -9px -9px 18px #ffffff;
+        backdrop-filter: blur(6px);
+
+        transition: all 0.5s;
+
+        //To help with title
+        position: relative;
+
+        &:first-child {
+            border-radius: 1.25rem 1.25rem 0 0;
+        }
+
+        &:last-child {
+            border-radius: 0 0 1.25rem 1.25rem;
+        }
+
+        &:hover {
+            border: 1px solid black;
+            // z-index: 1;
+        }
+        overflow: hidden;
+
+        @include desktop {
+            height: 15rem;
+            display: flex;
+        }
+    }
+
+    &__details {
+        // position: absolute;
+        // top: 15px;
+        // left: 15px;
+
+        // backdrop-filter: contrast(40%);
+
+        // color: white;
+
+        // border-top-right-radius: 10px;
+
+        // padding: 1rem 1rem 0 0;
+        @include desktop {
+            width: 25%;
+            padding: 1rem;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+
+    &__post-title {
+        @include desktop {
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__post-description {
+        flex: 1;
+    }
+
+    &__delete-btn {
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+    }
+
+    &__post-images {
+        display: flex;
+        overflow: auto;
+        scroll-snap-type: x mandatory;
+
+        cursor: pointer;
+
+        // border-radius: 1.25rem 1.25rem 0 0;
+        // border-radius: 1.25rem;
+
+        @include desktop {
+            flex: 1;
+        }
+    }
+
+    &__post-image {
+        scroll-snap-align: start;
+
+        @include desktop {
+            width: 20rem;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    &__mapbox {
+        @include desktop {
+            // width: 25%;
+        }
+    }
+}

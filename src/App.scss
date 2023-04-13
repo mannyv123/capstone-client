@@ -1,0 +1,31 @@
+@use "./styles/partials/variables" as *;
+@use "./styles/partials/mixins" as *;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $primary-color-light;
+    color: $primary-color-dark;
+    font-family: $primary-font;
+}
+
+//Global error styling
+.input-error {
+    outline: 0.125rem solid $error-color;
+}
+
+.error-msg {
+    color: $error-color;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+
+    &--signup,
+    &--add {
+        margin-top: 1rem;
+    }
+}

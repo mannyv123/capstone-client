@@ -1,0 +1,14 @@
+@use "./fonts" as *;
+
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
+$primary-font: "Montserrat", sans-serif;
+
+$primary-color-dark: #232625;
+$primary-color-light: #edfff4;
+$secondary-color: #dbded1;
+$tertiary-color: #4c594f;
+$nav-active-color: #090a0d;
+
+$error-color: #ff0000;

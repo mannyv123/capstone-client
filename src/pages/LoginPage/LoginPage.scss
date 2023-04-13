@@ -1,0 +1,56 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.login {
+    @include desktop {
+        padding: 5rem 35rem;
+    }
+
+    &__title {
+        @include desktop {
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__input-label {
+        margin-bottom: 0.25rem;
+    }
+
+    &__input {
+        border: 0.0625rem solid $tertiary-color;
+        color: $primary-color-dark;
+        font-family: $primary-font;
+        margin-bottom: 0.5rem;
+        border-radius: 5px;
+        padding: 0.5rem;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    &__btn {
+        background-color: $primary-color-dark;
+        color: $primary-color-light;
+        border-radius: 0.625rem;
+
+        padding: 0.5rem 1rem;
+        margin-top: 3rem;
+        width: 40%;
+
+        border: none;
+        cursor: pointer;
+
+        align-self: flex-end;
+
+        &:hover {
+            background-color: $tertiary-color;
+            outline: 0.0625rem solid $primary-color-dark;
+        }
+    }
+}

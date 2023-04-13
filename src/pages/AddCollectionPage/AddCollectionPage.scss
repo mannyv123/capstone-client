@@ -1,0 +1,136 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.new-collection {
+    @include desktop {
+        padding: 5rem 35rem;
+    }
+
+    &__sub-hdr {
+        margin: 1rem 0;
+    }
+
+    &__images-input {
+        width: 0.0063rem;
+        height: 0.0063rem;
+        opacity: 0;
+        position: absolute;
+    }
+
+    &__select-label {
+        background-color: $primary-color-dark;
+        color: $primary-color-light;
+        border-radius: 0.625rem;
+
+        padding: 0.5rem 1rem;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        width: 100%;
+
+        border: none;
+        cursor: pointer;
+
+        text-align: center;
+
+        &:hover {
+            background-color: $tertiary-color;
+            outline: 0.0625rem solid $primary-color-dark;
+        }
+    }
+
+    &__container-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__label {
+        margin-bottom: 0.25rem;
+    }
+
+    &__input {
+        @include desktop {
+            margin-bottom: 0.5rem;
+            border: 0.0625rem solid $tertiary-color;
+            border-radius: 5px;
+            padding: 0.5rem;
+            font-family: $primary-font;
+            color: $primary-color-dark;
+        }
+
+        &--description {
+            resize: none;
+
+            @include desktop {
+                height: 4rem;
+            }
+
+            &:last-of-type {
+                @include desktop {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    &__image-details {
+        display: flex;
+        flex-direction: column;
+
+        margin-bottom: 2rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__image-preview {
+        @include desktop {
+            width: 100%;
+            height: 15rem;
+
+            margin-bottom: 0.5rem;
+
+            object-fit: contain;
+            object-position: center;
+
+            background-color: $tertiary-color;
+            border-radius: 0.625rem;
+        }
+    }
+
+    &__image-input {
+        @include desktop {
+            margin-bottom: 0.5rem;
+            border: 0.0625rem solid $tertiary-color;
+            border-radius: 5px;
+            padding: 0.5rem;
+        }
+
+        &--location {
+            @include desktop {
+                width: 50%;
+            }
+        }
+    }
+
+    &__btn {
+        background-color: $primary-color-dark;
+        color: $primary-color-light;
+        border-radius: 0.625rem;
+
+        padding: 0.5rem 1rem;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+        width: 100%;
+
+        border: none;
+        cursor: pointer;
+
+        text-align: center;
+
+        &:hover {
+            background-color: $tertiary-color;
+            outline: 0.0625rem solid $primary-color-dark;
+        }
+    }
+}
