@@ -37,7 +37,7 @@ function CreateProfile({ setStep, handleInputChange, handleImageUpload, profileI
                     name="about"
                     id="about"
                     onChange={handleInputChange}
-                    className="new-profile__input new-profile__input--textarea "
+                    className="new-profile__input new-profile__input--textarea"
                 ></textarea>
                 <label htmlFor="setup" className="new-profile__label">
                     Your Setup:{" "}
@@ -46,7 +46,7 @@ function CreateProfile({ setStep, handleInputChange, handleImageUpload, profileI
                     name="setup"
                     id="setup"
                     onChange={handleInputChange}
-                    className="new-profile__input new-profile__input--textarea "
+                    className="new-profile__input new-profile__input--textarea"
                 ></textarea>
                 <div className="new-profile__btn-container">
                     <button

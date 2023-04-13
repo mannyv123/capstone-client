@@ -12,3 +12,20 @@ body {
     color: $primary-color-dark;
     font-family: $primary-font;
 }
+
+//Global error styling
+.input-error {
+    outline: 0.125rem solid $error-color;
+}
+
+.error-msg {
+    color: $error-color;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+
+    &--signup,
+    &--add {
+        margin-top: 1rem;
+    }
+}
