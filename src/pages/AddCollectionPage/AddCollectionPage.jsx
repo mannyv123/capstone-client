@@ -19,15 +19,79 @@ function AddCollectionPage() {
     const [imageInfo, setImageInfo] = useState([]); //tracks image info for each image
     const currentUser = localStorage.getItem("username"); //retreives username from local storage
     const navigate = useNavigate();
+    const [isErrorTitle, setIsErrorTitle] = useState(false);
+    const [isErrorDesc, setIsErrorDesc] = useState(false);
+    const [isErrorImages, setIsErrorImages] = useState(false);
+    const [isErrorImagesInfo, setIsErrorImagesInfo] = useState(false);
 
     //get user details on load
     useEffect(() => {
         getUser();
     }, []);
 
+    //Form Validation
+    const isFormValid = () => {
+        setIsErrorTitle(false);
+        setIsErrorTitle(false);
+        setIsErrorImages(false);
+        setIsErrorImagesInfo(false);
+
+        if (images === null) {
+            setIsErrorImages(true);
+            return false;
+        }
+
+        if (values.title === "") {
+            setIsErrorTitle(true);
+            return false;
+        }
+
+        if (values.description === "") {
+            setIsErrorDesc(true);
+            return false;
+        }
+
+        if (areImagesValid() === false) {
+            setIsErrorImagesInfo(true);
+            return false;
+        }
+
+        return true;
+    };
+
+    //Images Array Validation
+    const areImagesValid = () => {
+        let checkError = false;
+        if (imageInfo.length === 0) {
+            return false;
+        }
+        for (const info of imageInfo) {
+            if (!info.imgLat) {
+                setIsErrorImagesInfo(true);
+                checkError = true;
+            } else if (!info.imgLong) {
+                setIsErrorImagesInfo(true);
+                checkError = true;
+            } else if (!info.imgTitle) {
+                setIsErrorImagesInfo(true);
+                checkError = true;
+            }
+        }
+
+        if (checkError) {
+            return false;
+        } else {
+            return true;
+        }
+    };
+
     //Handle submission of new collection details and images
     const handleFormSubmit = (event) => {
         event.preventDefault();
+
+        if (!isFormValid()) {
+            return console.error("Please fix form errors");
+        }
 
         const formData = new FormData();
         for (const key in values) {
@@ -102,30 +166,44 @@ function AddCollectionPage() {
                 <label htmlFor="images" className="new-collection__select-label">
                     Choose Files
                 </label>
+                {isErrorImages && (
+                    <p className="error-msg error-msg--add">
+                        Missing images! Please select images to upload.
+                    </p>
+                )}
                 <div className="new-collection__container-details">
                     <h3 className="new-collection__sub-hdr">Add Details</h3>
                     <label htmlFor="title" className="new-collection__label">
                         Title:
                     </label>
                     <input
-                        className="new-collection__input"
+                        className={`new-collection__input ${isErrorTitle ? "input-error" : ""}`}
                         type="text"
                         name="title"
                         id="title"
                         onChange={handleInputChange}
                     />
+                    {isErrorTitle && <p className="error-msg">Missing information!</p>}
                     <label htmlFor="description" className="new-collection__label">
                         Description:
                     </label>
                     <textarea
-                        className="new-collection__input new-collection__input--description"
+                        className={`new-collection__input new-collection__input--description ${
+                            isErrorDesc ? "error-input" : ""
+                        }`}
                         name="description"
                         id="description"
                         onChange={handleInputChange}
                     ></textarea>
+                    {isErrorDesc && <p className="error-msg">Missing information!</p>}
                 </div>
                 <div className="new-collection__container-locations">
                     {imagesArray.length > 0 && <h3 className="new-collection__sub-hdr">Add Photo Details</h3>}
+                    {isErrorImagesInfo && (
+                        <p className="error-msg">
+                            Missing information! Please fill out all fields for each image.
+                        </p>
+                    )}
                     {imagesArray.map((image, index) => (
                         <div key={index} className="new-collection__image-details">
                             <img
@@ -133,13 +211,13 @@ function AddCollectionPage() {
                                 alt="collection item"
                                 className="new-collection__image-preview"
                             />
-                            <label className="new-collection__label" htmlFor={`imgTitle${index}`}>
+                            <label className="new-collection__label" htmlFor={`imgTitle`}>
                                 Image Title:
                             </label>
                             <input
                                 type="text"
-                                name={`imgTitle${index}`}
-                                id={`imgTitle${index}`}
+                                name={`imgTitle`}
+                                id={`imgTitle$`}
                                 onChange={(event) => handleImageInfo(event, index)}
                                 className="new-collection__image-input"
                             />
