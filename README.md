@@ -10,6 +10,9 @@ Collections is a platform for professional and amateur photographers to showcase
 -   Can delete posts
 -   view fullscreen images from posts
 
+## Video Demo
+https://github.com/mannyv123/capstone-client/assets/123426666/a3f5dd75-119d-409c-a105-606cff265074
+
 ## Tech Stack
 
 **Client:** React, SASS, Mapbox GL JS, Axios, React-Router-Dom, React-Icons
