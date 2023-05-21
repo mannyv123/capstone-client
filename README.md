@@ -11,7 +11,7 @@ Collections is a platform for professional and amateur photographers to showcase
 -   view fullscreen images from posts
 
 ## Video Demo
-https://github.com/mannyv123/capstone-client/assets/123426666/a3f5dd75-119d-409c-a105-606cff265074
+https://github.com/mannyv123/capstone-client/assets/123426666/e4088369-99fd-4488-a4e2-0e8d204f3355
 
 ## Tech Stack
 
