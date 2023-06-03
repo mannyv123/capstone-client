@@ -2,6 +2,10 @@
 
 Collections is a platform for professional and amateur photographers to showcase their work through albums (called "Collections"). Users can create collections that show under their profile. The platform provides a supportive community for photographers to connect and grow their audience.
 
+## Demo
+
+https://collections-capstone.netlify.app/
+
 ## Features
 
 -   Create new user with profile
@@ -11,6 +15,7 @@ Collections is a platform for professional and amateur photographers to showcase
 -   view fullscreen images from posts
 
 ## Video Demo
+
 https://github.com/mannyv123/capstone-client/assets/123426666/e4088369-99fd-4488-a4e2-0e8d204f3355
 
 ## Tech Stack
