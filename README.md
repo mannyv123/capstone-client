@@ -24,6 +24,11 @@ https://github.com/mannyv123/capstone-client/assets/123426666/e4088369-99fd-4488
 
 **Server:** Node, Express, AWS S3 (AWS SDK: Client-S3 and S3-Request-Presigner), MySQL2, Knex, Multer, Nodemon
 
+## Related
+
+-   Back end repository: https://github.com/mannyv123/capstone-server
+-   Redesigned application: https://github.com/mannyv123/collections-client
+
 ## Run Locally
 
 ### Server Setup:
